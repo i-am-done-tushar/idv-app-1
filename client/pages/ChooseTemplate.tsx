@@ -85,7 +85,7 @@ export default function ChooseTemplate() {
             <div className="flex flex-col items-start flex-1 rounded border border-[#DEDEDD] bg-white">
               <div className="flex flex-col items-start w-full">
                 <div className="flex h-[66px] px-4 pt-4 items-center gap-2 w-full">
-                  <FileShield size={36} className="text-[#0073EA]" strokeWidth={2} />
+                  <Shield size={36} className="text-[#0073EA]" strokeWidth={2} />
                 </div>
                 <div className="flex px-4 py-2 flex-col items-start gap-2 w-full">
                   <div className="flex justify-center items-center gap-2 w-full">
