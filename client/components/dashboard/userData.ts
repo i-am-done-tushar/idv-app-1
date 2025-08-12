@@ -79,13 +79,12 @@ export const allUsers: User[] = [
   }
 ];
 
-// Generate user lists for each template row
-export const getTemplateUsers = (templateId: number): User[] => {
+// Generate user lists based on the +N count in the invitees
+export const getTemplateUsers = (templateId: number, additionalCount: number): User[] => {
   const baseUsers = allUsers.slice(0, 2); // First two users (OP, VS equivalent)
-  
-  // Add additional users based on template ID to simulate different +N counts
-  const additionalCount = Math.max(1, (templateId % 7) + 1);
+
+  // Add exactly the number specified in +N
   const additionalUsers = allUsers.slice(2, 2 + additionalCount);
-  
+
   return [...baseUsers, ...additionalUsers];
 };
