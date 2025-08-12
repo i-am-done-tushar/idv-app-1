@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MoreHorizontal } from 'lucide-react';
+import { InviteesModal } from './InviteesModal';
+import { User, getTemplateUsers } from './userData';
 
 interface Template {
   id: number;
@@ -124,34 +126,71 @@ function StatusBadge({ status }: { status: 'Completed' | 'In Progress' }) {
   );
 }
 
-function AvatarGroup({ invitees }: { invitees: Array<{ initials: string; color: string }> }) {
+interface AvatarGroupProps {
+  invitees: Array<{ initials: string; color: string }>;
+  templateId: number;
+  onShowModal: (templateId: number, event: React.MouseEvent) => void;
+}
+
+function AvatarGroup({ invitees, templateId, onShowModal }: AvatarGroupProps) {
   return (
     <div className="flex items-center -space-x-1.5">
-      {invitees.map((invitee, index) => (
-        <div
-          key={index}
-          className="flex items-center justify-center w-7 h-7 rounded-full border border-white text-xs font-medium text-secondary-text"
-          style={{
-            backgroundColor: invitee.color === 'grey-bg' ? 'hsl(var(--grey-bg))' :
-                           invitee.color === 'avatar-1' ? 'hsl(var(--avatar-1))' :
-                           invitee.color === 'avatar-2' ? 'hsl(var(--avatar-2))' :
-                           invitee.color === 'avatar-3' ? 'hsl(var(--avatar-3))' :
-                           invitee.color === 'avatar-4' ? 'hsl(var(--avatar-4))' :
-                           invitee.color === 'avatar-5' ? 'hsl(var(--avatar-5))' :
-                           invitee.color === 'avatar-6' ? 'hsl(var(--avatar-6))' :
-                           invitee.color === 'avatar-7' ? 'hsl(var(--avatar-7))' :
-                           invitee.color === 'avatar-8' ? 'hsl(var(--avatar-8))' :
-                           'hsl(var(--grey-bg))'
-          }}
-        >
-          {invitee.initials}
-        </div>
-      ))}
+      {invitees.map((invitee, index) => {
+        const isMoreButton = invitee.initials.startsWith('+');
+        return (
+          <div
+            key={index}
+            className={`flex items-center justify-center w-7 h-7 rounded-full border border-white text-xs font-medium text-secondary-text ${
+              isMoreButton ? 'cursor-pointer hover:opacity-80 transition-opacity' : ''
+            }`}
+            style={{
+              backgroundColor: invitee.color === 'grey-bg' ? 'hsl(var(--grey-bg))' :
+                             invitee.color === 'avatar-1' ? 'hsl(var(--avatar-1))' :
+                             invitee.color === 'avatar-2' ? 'hsl(var(--avatar-2))' :
+                             invitee.color === 'avatar-3' ? 'hsl(var(--avatar-3))' :
+                             invitee.color === 'avatar-4' ? 'hsl(var(--avatar-4))' :
+                             invitee.color === 'avatar-5' ? 'hsl(var(--avatar-5))' :
+                             invitee.color === 'avatar-6' ? 'hsl(var(--avatar-6))' :
+                             invitee.color === 'avatar-7' ? 'hsl(var(--avatar-7))' :
+                             invitee.color === 'avatar-8' ? 'hsl(var(--avatar-8))' :
+                             'hsl(var(--grey-bg))'
+            }}
+            onClick={isMoreButton ? (e) => onShowModal(templateId, e) : undefined}
+          >
+            {invitee.initials}
+          </div>
+        );
+      })}
     </div>
   );
 }
 
 export function TemplatesTable() {
+  const [modalState, setModalState] = useState<{
+    isOpen: boolean;
+    users: User[];
+    position: { x: number; y: number };
+  }>({ isOpen: false, users: [], position: { x: 0, y: 0 } });
+
+  const handleShowModal = (templateId: number, event: React.MouseEvent) => {
+    event.stopPropagation();
+    const rect = (event.target as HTMLElement).getBoundingClientRect();
+    const users = getTemplateUsers(templateId);
+
+    setModalState({
+      isOpen: true,
+      users,
+      position: {
+        x: rect.left - 280 + rect.width, // Position modal to the left of the clicked element
+        y: rect.top
+      }
+    });
+  };
+
+  const handleCloseModal = () => {
+    setModalState(prev => ({ ...prev, isOpen: false }));
+  };
+
   return (
     <div className="border border-border-color rounded">
       <div className="flex">
@@ -179,7 +218,11 @@ export function TemplatesTable() {
               </div>
               {templates.map((template) => (
                 <div key={template.id} className="flex items-center h-[38px] px-2 pr-6 border-t border-border-color bg-white">
-                  <AvatarGroup invitees={template.invitees} />
+                  <AvatarGroup
+                    invitees={template.invitees}
+                    templateId={template.id}
+                    onShowModal={handleShowModal}
+                  />
                 </div>
               ))}
             </div>
@@ -252,6 +295,13 @@ export function TemplatesTable() {
           ))}
         </div>
       </div>
+
+      <InviteesModal
+        isOpen={modalState.isOpen}
+        onClose={handleCloseModal}
+        users={modalState.users}
+        position={modalState.position}
+      />
     </div>
   );
 }
