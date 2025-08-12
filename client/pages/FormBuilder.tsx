@@ -31,6 +31,13 @@ export default function FormBuilder() {
     // Navigate to preview step
   };
 
+  const handleSystemFieldChange = (field: keyof typeof systemFields, value: string) => {
+    setSystemFields(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
   const addCustomField = () => {
     const newField = {
       id: Date.now(),
