@@ -3,7 +3,6 @@ import React from 'react';
 interface AddNewDropdownProps {
   isOpen: boolean;
   onClose: () => void;
-  position?: { x: number; y: number };
 }
 
 interface DropdownItemProps {
@@ -24,7 +23,7 @@ function DropdownItem({ label, onClick }: DropdownItemProps) {
   );
 }
 
-export function AddNewDropdown({ isOpen, onClose, position }: AddNewDropdownProps) {
+export function AddNewDropdown({ isOpen, onClose }: AddNewDropdownProps) {
   if (!isOpen) return null;
 
   const handleAction = (action: string) => {
@@ -35,18 +34,18 @@ export function AddNewDropdown({ isOpen, onClose, position }: AddNewDropdownProp
   return (
     <>
       {/* Backdrop */}
-      <div 
-        className="fixed inset-0 z-40"
+      <div
+        className="fixed inset-0 bg-black bg-opacity-20 z-40"
         onClick={onClose}
       />
-      
-      {/* Dropdown */}
-      <div 
+
+      {/* Modal */}
+      <div
         className="fixed z-50 w-[230px] p-2 bg-white rounded shadow-lg"
         style={{
-          left: position?.x || '50%',
-          top: position?.y || '50%',
-          transform: position ? 'none' : 'translate(-50%, -50%)',
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
           boxShadow: '0 6px 20px 0 rgba(0, 0, 0, 0.20)'
         }}
       >
