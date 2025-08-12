@@ -69,7 +69,7 @@ export function AddNewDropdown({ isOpen, onClose, onCreateNewTemplate }: AddNewD
 
           <DropdownItem
             label="Choose Template"
-            onClick={() => handleAction("Choose Template")}
+            onClick={handleChooseTemplate}
           />
         </div>
       </div>
