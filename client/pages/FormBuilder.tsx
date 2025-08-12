@@ -393,7 +393,6 @@ export default function FormBuilder() {
                                         />
                                       </div>
                                       <button
-                                        ref={typeDropdownRef}
                                         onClick={(e) => handleTypeDropdownClick(field.id, e)}
                                         className="flex w-[188px] h-[42px] px-3 justify-between items-center rounded border border-[#D0D4E4] hover:bg-gray-50 transition-colors"
                                       >
