@@ -119,9 +119,9 @@ export function FieldTypeSelector({ isOpen, onClose, onSelect, position }: Field
       <div
         className="fixed z-50 w-[250px] p-2 bg-white rounded shadow-lg border border-gray-200"
         style={{
-          left: position?.x || 'calc(50% - 125px)',
-          top: position?.y || '50%',
-          transform: position ? 'none' : 'translate(0, -50%)',
+          left: '50%',
+          top: '50%',
+          transform: 'translate(-50%, -50%)',
           boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)'
         }}
       >
