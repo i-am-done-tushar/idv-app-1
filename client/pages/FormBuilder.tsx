@@ -86,11 +86,6 @@ export default function FormBuilder() {
 
   const handleTypeDropdownClick = (fieldId: number, event: React.MouseEvent) => {
     event.stopPropagation();
-    const rect = (event.target as HTMLElement).getBoundingClientRect();
-    setSelectorPosition({
-      x: rect.left,
-      y: rect.bottom + 4
-    });
     setSelectedFieldId(fieldId);
     setFieldTypeSelectorOpen(true);
   };
