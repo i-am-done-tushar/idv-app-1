@@ -466,6 +466,14 @@ export default function FormBuilder() {
           </div>
         </div>
       </div>
+
+      {/* Field Type Selector */}
+      <FieldTypeSelector
+        isOpen={fieldTypeSelectorOpen}
+        onClose={handleFieldTypeSelectorClose}
+        onSelect={handleFieldTypeSelect}
+        position={selectorPosition}
+      />
     </div>
   );
 }
