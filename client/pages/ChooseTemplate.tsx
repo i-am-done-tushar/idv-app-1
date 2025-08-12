@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronLeft, FileShield, Lock } from "lucide-react";
+import { ChevronLeft, Shield, Lock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function ChooseTemplate() {
