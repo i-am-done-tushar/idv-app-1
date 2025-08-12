@@ -465,7 +465,6 @@ export default function FormBuilder() {
         isOpen={fieldTypeSelectorOpen}
         onClose={handleFieldTypeSelectorClose}
         onSelect={handleFieldTypeSelect}
-        position={selectorPosition}
       />
     </div>
   );
