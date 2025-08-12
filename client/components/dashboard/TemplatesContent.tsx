@@ -3,6 +3,7 @@ import { Filter, Search, ChevronDown, MoreHorizontal } from "lucide-react";
 import { TemplatesTable } from "./TemplatesTable";
 import { Pagination } from "./Pagination";
 import { AddNewDropdown } from "./AddNewDropdown";
+import { NameTemplateModal } from "./NameTemplateModal";
 
 export function TemplatesContent() {
   const [isAddNewDropdownOpen, setIsAddNewDropdownOpen] = useState(false);
