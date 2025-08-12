@@ -130,7 +130,19 @@ function AvatarGroup({ invitees }: { invitees: Array<{ initials: string; color: 
       {invitees.map((invitee, index) => (
         <div
           key={index}
-          className={`flex items-center justify-center w-7 h-7 rounded-full border border-white text-xs font-medium text-secondary-text bg-${invitee.color}`}
+          className="flex items-center justify-center w-7 h-7 rounded-full border border-white text-xs font-medium text-secondary-text"
+          style={{
+            backgroundColor: invitee.color === 'grey-bg' ? 'hsl(var(--grey-bg))' :
+                           invitee.color === 'avatar-1' ? 'hsl(var(--avatar-1))' :
+                           invitee.color === 'avatar-2' ? 'hsl(var(--avatar-2))' :
+                           invitee.color === 'avatar-3' ? 'hsl(var(--avatar-3))' :
+                           invitee.color === 'avatar-4' ? 'hsl(var(--avatar-4))' :
+                           invitee.color === 'avatar-5' ? 'hsl(var(--avatar-5))' :
+                           invitee.color === 'avatar-6' ? 'hsl(var(--avatar-6))' :
+                           invitee.color === 'avatar-7' ? 'hsl(var(--avatar-7))' :
+                           invitee.color === 'avatar-8' ? 'hsl(var(--avatar-8))' :
+                           'hsl(var(--grey-bg))'
+          }}
         >
           {invitee.initials}
         </div>
