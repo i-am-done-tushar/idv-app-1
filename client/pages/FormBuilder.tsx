@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { ChevronLeft, ChevronRight, Minus, Plus, Copy, Trash2, GripVertical } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { FieldTypeSelector } from "../components/dashboard/FieldTypeSelector";
