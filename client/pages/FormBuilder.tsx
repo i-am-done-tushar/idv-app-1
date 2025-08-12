@@ -361,8 +361,14 @@ export default function FormBuilder() {
                                   </div>
                                   <div className="flex flex-col items-start flex-1">
                                     <div className="flex py-5 pr-5 items-center gap-2.5 w-full">
-                                      <div className="flex h-[42px] px-3 items-center gap-2.5 flex-1 rounded bg-[#F1F2F4]">
-                                        <span className="text-[#323238] text-sm font-semibold">{field.label}</span>
+                                      <div className="flex h-[42px] flex-1 rounded bg-[#F1F2F4]">
+                                        <input
+                                          type="text"
+                                          value={field.label}
+                                          onChange={(e) => updateCustomField(field.id, { label: e.target.value })}
+                                          className="w-full h-full px-3 bg-[#F1F2F4] text-[#323238] text-sm font-semibold border-none outline-none rounded"
+                                          placeholder="Enter field label"
+                                        />
                                       </div>
                                       <div className="flex w-[188px] h-[42px] px-3 justify-between items-center rounded border border-[#D0D4E4]">
                                         <span className="text-[#323238] text-sm font-semibold">{field.type}</span>
