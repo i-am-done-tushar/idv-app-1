@@ -1,8 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface AddNewDropdownProps {
   isOpen: boolean;
   onClose: () => void;
+  onCreateNewTemplate?: () => void;
 }
 
 interface DropdownItemProps {
@@ -21,8 +23,24 @@ function DropdownItem({ label, onClick }: DropdownItemProps) {
   );
 }
 
-export function AddNewDropdown({ isOpen, onClose }: AddNewDropdownProps) {
+export function AddNewDropdown({
+  isOpen,
+  onClose,
+  onCreateNewTemplate,
+}: AddNewDropdownProps) {
+  const navigate = useNavigate();
+
   if (!isOpen) return null;
+
+  const handleCreateNewTemplate = () => {
+    onClose(); // Close the dropdown first
+    onCreateNewTemplate?.();
+  };
+
+  const handleChooseTemplate = () => {
+    onClose(); // Close the dropdown first
+    navigate("/choose-template");
+  };
 
   const handleAction = (action: string) => {
     console.log(`${action} action triggered`);
@@ -50,12 +68,12 @@ export function AddNewDropdown({ isOpen, onClose }: AddNewDropdownProps) {
         <div className="flex flex-col gap-px">
           <DropdownItem
             label="Create New Template"
-            onClick={() => handleAction("Create New Template")}
+            onClick={handleCreateNewTemplate}
           />
 
           <DropdownItem
             label="Choose Template"
-            onClick={() => handleAction("Choose Template")}
+            onClick={handleChooseTemplate}
           />
         </div>
       </div>

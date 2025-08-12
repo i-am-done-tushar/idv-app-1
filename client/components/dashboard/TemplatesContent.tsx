@@ -3,9 +3,16 @@ import { Filter, Search, ChevronDown, MoreHorizontal } from "lucide-react";
 import { TemplatesTable } from "./TemplatesTable";
 import { Pagination } from "./Pagination";
 import { AddNewDropdown } from "./AddNewDropdown";
+import { NameTemplateModal } from "./NameTemplateModal";
 
 export function TemplatesContent() {
   const [isAddNewDropdownOpen, setIsAddNewDropdownOpen] = useState(false);
+  const [isNameTemplateModalOpen, setIsNameTemplateModalOpen] = useState(false);
+
+  const handleCreateNewTemplate = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    setIsNameTemplateModalOpen(true);
+  };
 
   const handleShowAddNewDropdown = (event: React.MouseEvent) => {
     event.stopPropagation();
@@ -14,6 +21,11 @@ export function TemplatesContent() {
 
   const handleCloseAddNewDropdown = () => {
     setIsAddNewDropdownOpen(false);
+  };
+
+  const handleSaveTemplate = (templateName: string) => {
+    console.log(`Template created with name: ${templateName}`);
+    // Here you would typically make an API call to create the template
   };
 
   return (
@@ -48,7 +60,7 @@ export function TemplatesContent() {
             <div className="flex items-center">
               <button
                 className="flex items-center h-8 px-3 gap-3 rounded-l bg-primary text-white hover:bg-blue-600 transition-colors"
-                onClick={handleShowAddNewDropdown}
+                onClick={handleCreateNewTemplate}
               >
                 <span className="text-xs font-medium">Add New</span>
               </button>
@@ -74,6 +86,13 @@ export function TemplatesContent() {
       <AddNewDropdown
         isOpen={isAddNewDropdownOpen}
         onClose={handleCloseAddNewDropdown}
+        onCreateNewTemplate={() => setIsNameTemplateModalOpen(true)}
+      />
+
+      <NameTemplateModal
+        isOpen={isNameTemplateModalOpen}
+        onClose={() => setIsNameTemplateModalOpen(false)}
+        onSave={handleSaveTemplate}
       />
     </div>
   );
