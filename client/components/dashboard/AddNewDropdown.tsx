@@ -65,12 +65,6 @@ export function AddNewDropdown({ isOpen, onClose, onCreateNewTemplate }: AddNewD
           />
         </div>
       </div>
-
-      <NameTemplateModal
-        isOpen={isNameTemplateModalOpen}
-        onClose={() => setIsNameTemplateModalOpen(false)}
-        onSave={handleSaveTemplate}
-      />
     </>
   );
 }
