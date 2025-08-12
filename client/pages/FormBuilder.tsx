@@ -371,6 +371,23 @@ export default function FormBuilder() {
                           </p>
                         </div>
 
+                        {/* Standard Additional Fields */}
+                        <div className="flex flex-col items-start gap-2 w-full mb-6">
+                          {/* Address Field */}
+                          <div className="flex w-[923px] flex-col items-start gap-4">
+                            <div className="flex flex-col items-start flex-shrink-0 w-full rounded-lg border border-[#D0D4E4] bg-white p-5">
+                              <label className="text-[#323238] text-[13px] font-semibold leading-3 mb-2">
+                                Address
+                              </label>
+                              <input
+                                type="text"
+                                placeholder="Eg: jhon wick"
+                                className="w-full h-10 px-3 text-[#323238] text-[13px] border border-[#D0D4E4] rounded focus:outline-none focus:ring-2 focus:ring-[#0073EA] focus:border-transparent placeholder:text-[#676879]"
+                              />
+                            </div>
+                          </div>
+                        </div>
+
                         {/* Custom Fields */}
                         <div className="h-[172px] w-full relative">
                           <div className="w-[923px] h-[153px] flex-shrink-0 absolute left-0 top-0">
