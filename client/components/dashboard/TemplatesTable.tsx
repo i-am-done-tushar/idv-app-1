@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MoreHorizontal } from 'lucide-react';
 import { InviteesModal } from './InviteesModal';
+import { TemplateActionsMenu } from './TemplateActionsMenu';
 import { User, getTemplateUsers } from './userData';
 
 interface Template {
@@ -172,6 +173,13 @@ export function TemplatesTable() {
     position: { x: number; y: number };
   }>({ isOpen: false, users: [], position: { x: 0, y: 0 } });
 
+  const [actionsMenuState, setActionsMenuState] = useState<{
+    isOpen: boolean;
+    templateId: number;
+    templateName: string;
+    position: { x: number; y: number };
+  }>({ isOpen: false, templateId: 0, templateName: '', position: { x: 0, y: 0 } });
+
   const handleShowModal = (templateId: number, event: React.MouseEvent) => {
     event.stopPropagation();
     const rect = (event.target as HTMLElement).getBoundingClientRect();
@@ -194,6 +202,25 @@ export function TemplatesTable() {
 
   const handleCloseModal = () => {
     setModalState(prev => ({ ...prev, isOpen: false }));
+  };
+
+  const handleShowActionsMenu = (templateId: number, templateName: string, event: React.MouseEvent) => {
+    event.stopPropagation();
+    const rect = (event.target as HTMLElement).getBoundingClientRect();
+
+    setActionsMenuState({
+      isOpen: true,
+      templateId,
+      templateName,
+      position: {
+        x: rect.left - 250 + rect.width, // Position menu to the left of the clicked element
+        y: rect.top
+      }
+    });
+  };
+
+  const handleCloseActionsMenu = () => {
+    setActionsMenuState(prev => ({ ...prev, isOpen: false }));
   };
 
   return (
@@ -293,7 +320,10 @@ export function TemplatesTable() {
           <div className="h-[38px] bg-table-header-bg"></div>
           {templates.map((template) => (
             <div key={template.id} className="flex items-center justify-center h-[38px] border-t border-border-color bg-white">
-              <button className="flex items-center justify-center w-7 h-7 rounded-full bg-white">
+              <button
+                className="flex items-center justify-center w-7 h-7 rounded-full bg-white hover:bg-gray-50 transition-colors"
+                onClick={(e) => handleShowActionsMenu(template.id, template.name, e)}
+              >
                 <MoreHorizontal size={16} className="text-placeholder-text" />
               </button>
             </div>
@@ -306,6 +336,14 @@ export function TemplatesTable() {
         onClose={handleCloseModal}
         users={modalState.users}
         position={modalState.position}
+      />
+
+      <TemplateActionsMenu
+        isOpen={actionsMenuState.isOpen}
+        onClose={handleCloseActionsMenu}
+        position={actionsMenuState.position}
+        templateId={actionsMenuState.templateId}
+        templateName={actionsMenuState.templateName}
       />
     </div>
   );
