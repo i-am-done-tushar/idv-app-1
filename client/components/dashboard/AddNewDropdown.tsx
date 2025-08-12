@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { NameTemplateModal } from "./NameTemplateModal";
+import React from "react";
 
 interface AddNewDropdownProps {
   isOpen: boolean;
   onClose: () => void;
+  onCreateNewTemplate?: () => void;
 }
 
 interface DropdownItemProps {
