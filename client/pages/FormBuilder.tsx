@@ -4,6 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 export default function FormBuilder() {
   const navigate = useNavigate();
+  const [systemFields, setSystemFields] = useState({
+    firstName: "",
+    lastName: "",
+    email: ""
+  });
   const [customFields, setCustomFields] = useState([
     {
       id: 1,
