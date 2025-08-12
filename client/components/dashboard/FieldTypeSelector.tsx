@@ -117,11 +117,11 @@ export function FieldTypeSelector({ isOpen, onClose, onSelect, position }: Field
 
       {/* Dropdown */}
       <div
-        className="fixed z-50 w-[250px] p-2 bg-white rounded shadow-lg"
+        className="fixed z-50 w-[250px] p-2 bg-white rounded shadow-lg border border-gray-200"
         style={{
-          left: position?.x || '50%',
+          left: position?.x || 'calc(50% - 125px)',
           top: position?.y || '50%',
-          transform: position ? 'none' : 'translate(-50%, -50%)',
+          transform: position ? 'none' : 'translate(0, -50%)',
           boxShadow: '0 4px 4px 0 rgba(0, 0, 0, 0.25)'
         }}
       >
