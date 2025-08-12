@@ -43,7 +43,8 @@ export default function FormBuilder() {
       id: Date.now(),
       label: "Custom Label",
       type: "Input",
-      required: false
+      required: false,
+      value: ""
     };
     setCustomFields([...customFields, newField]);
   };
@@ -58,15 +59,22 @@ export default function FormBuilder() {
       const newField = {
         ...fieldToDuplicate,
         id: Date.now(),
-        label: fieldToDuplicate.label + " Copy"
+        label: fieldToDuplicate.label + " Copy",
+        value: ""
       };
       setCustomFields([...customFields, newField]);
     }
   };
 
   const toggleRequired = (id: number) => {
-    setCustomFields(customFields.map(field => 
+    setCustomFields(customFields.map(field =>
       field.id === id ? { ...field, required: !field.required } : field
+    ));
+  };
+
+  const updateCustomField = (id: number, updates: Partial<typeof customFields[0]>) => {
+    setCustomFields(customFields.map(field =>
+      field.id === id ? { ...field, ...updates } : field
     ));
   };
 
