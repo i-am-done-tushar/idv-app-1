@@ -114,14 +114,15 @@ export default function FormBuilder() {
           {/* Steps */}
           <div className="flex w-full px-4 py-3 justify-between items-center border-b border-[#DEDEDD] bg-white">
             <div className="flex justify-between items-center flex-1">
-              <button 
+              <button
                 onClick={handlePrevious}
                 className="flex justify-center items-center gap-1 rounded hover:bg-gray-50 transition-colors p-2"
               >
                 <span className="text-[#505258] text-[13px] font-medium">Previous</span>
               </button>
 
-              <div className="flex w-[667px] justify-between items-center">
+              {/* Centered Progress Stepper */}
+              <div className="flex justify-center items-center flex-1">
                 <div className="flex items-center gap-2">
                   {/* Step 1 - Active */}
                   <div className="flex flex-col justify-center items-center gap-1.5">
@@ -152,7 +153,7 @@ export default function FormBuilder() {
                 </div>
               </div>
 
-              <button 
+              <button
                 onClick={handleNext}
                 className="flex justify-center items-center gap-1 rounded hover:bg-gray-50 transition-colors p-2"
               >
