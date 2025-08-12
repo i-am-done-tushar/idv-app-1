@@ -23,11 +23,23 @@ function DropdownItem({ label, onClick }: DropdownItemProps) {
 }
 
 export function AddNewDropdown({ isOpen, onClose }: AddNewDropdownProps) {
+  const [isNameTemplateModalOpen, setIsNameTemplateModalOpen] = useState(false);
+
   if (!isOpen) return null;
+
+  const handleCreateNewTemplate = () => {
+    onClose(); // Close the dropdown first
+    setIsNameTemplateModalOpen(true);
+  };
 
   const handleAction = (action: string) => {
     console.log(`${action} action triggered`);
     onClose();
+  };
+
+  const handleSaveTemplate = (templateName: string) => {
+    console.log(`Template created with name: ${templateName}`);
+    // Here you would typically make an API call to create the template
   };
 
   return (
