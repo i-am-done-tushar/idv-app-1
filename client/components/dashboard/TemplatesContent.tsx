@@ -5,26 +5,15 @@ import { Pagination } from './Pagination';
 import { AddNewDropdown } from './AddNewDropdown';
 
 export function TemplatesContent() {
-  const [addNewDropdownState, setAddNewDropdownState] = useState<{
-    isOpen: boolean;
-    position: { x: number; y: number };
-  }>({ isOpen: false, position: { x: 0, y: 0 } });
+  const [isAddNewDropdownOpen, setIsAddNewDropdownOpen] = useState(false);
 
   const handleShowAddNewDropdown = (event: React.MouseEvent) => {
     event.stopPropagation();
-    const rect = (event.target as HTMLElement).getBoundingClientRect();
-
-    setAddNewDropdownState({
-      isOpen: true,
-      position: {
-        x: rect.left,
-        y: rect.bottom + 4 // Position dropdown below the button
-      }
-    });
+    setIsAddNewDropdownOpen(true);
   };
 
   const handleCloseAddNewDropdown = () => {
-    setAddNewDropdownState(prev => ({ ...prev, isOpen: false }));
+    setIsAddNewDropdownOpen(false);
   };
 
   return (
@@ -81,9 +70,8 @@ export function TemplatesContent() {
       </div>
 
       <AddNewDropdown
-        isOpen={addNewDropdownState.isOpen}
+        isOpen={isAddNewDropdownOpen}
         onClose={handleCloseAddNewDropdown}
-        position={addNewDropdownState.position}
       />
     </div>
   );
