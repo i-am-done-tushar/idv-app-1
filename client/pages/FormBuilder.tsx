@@ -389,16 +389,22 @@ export default function FormBuilder() {
                         </div>
 
                         {/* Custom Fields */}
-                        <div className="h-[172px] w-full relative">
-                          <div className="w-[923px] h-[153px] flex-shrink-0 absolute left-0 top-0">
-                            {customFields.map((field, index) => (
-                              <div key={field.id} className="flex w-[923px] flex-col items-start rounded-lg border-r border-b border-l border-[#0073EA] bg-white absolute left-0 top-0 h-[153px]">
+                        <div className="flex flex-col items-start gap-2 w-full">
+                          {customFields.map((field, index) => (
+                            <div key={field.id} className="w-[923px] relative">
+                              <div className="flex flex-col items-start rounded-lg border-r border-b border-l border-[#0073EA] bg-white h-[153px]">
+                                {/* Blue top border */}
                                 <div className="flex h-2 px-2.5 items-start gap-2.5 w-full bg-[#0073EA]"></div>
-                                <div className="flex items-start w-full">
-                                  <div className="flex w-[22px] items-center gap-2.5 h-full">
+
+                                <div className="flex items-start w-full flex-1">
+                                  {/* Drag Handle */}
+                                  <div className="flex w-[22px] items-center justify-center h-full py-4">
                                     <GripVertical size={22} className="text-[#676879] flex-shrink-0" />
                                   </div>
+
+                                  {/* Field Content */}
                                   <div className="flex flex-col items-start flex-1">
+                                    {/* Top Row: Label and Type */}
                                     <div className="flex py-5 pr-5 items-center gap-2.5 w-full">
                                       <div className="flex h-[42px] flex-1 rounded bg-[#F1F2F4]">
                                         <input
@@ -419,17 +425,19 @@ export default function FormBuilder() {
                                         </svg>
                                       </button>
                                     </div>
+
+                                    {/* Bottom Row: Actions */}
                                     <div className="flex h-16 pr-7 justify-end items-center gap-2.5 w-full bg-white">
                                       <div className="flex flex-col justify-center items-end gap-2.5 flex-1 h-full border-t border-[#D0D4E4]">
                                         <div className="flex items-center gap-3">
                                           <div className="flex items-center gap-px">
-                                            <button 
+                                            <button
                                               onClick={() => duplicateCustomField(field.id)}
                                               className="flex w-8 h-8 justify-center items-center gap-2.5 rounded-full hover:bg-gray-100 transition-colors"
                                             >
                                               <Copy size={24} className="text-[#676879] flex-shrink-0" strokeWidth={1.5} />
                                             </button>
-                                            <button 
+                                            <button
                                               onClick={() => removeCustomField(field.id)}
                                               className="flex w-8 h-8 justify-center items-center gap-2.5 rounded-full hover:bg-gray-100 transition-colors"
                                             >
@@ -438,7 +446,7 @@ export default function FormBuilder() {
                                           </div>
                                           <div className="flex pl-4 items-center gap-1 h-full border-l border-[#D0D4E4]">
                                             <span className="text-[#323238] text-sm font-semibold">Required</span>
-                                            <button 
+                                            <button
                                               onClick={() => toggleRequired(field.id)}
                                               className={`flex w-6 p-0.5 items-center gap-2 rounded-full transition-colors ${
                                                 field.required ? 'bg-[#0073EA]' : 'bg-[#A3ADBA]'
@@ -455,16 +463,18 @@ export default function FormBuilder() {
                                   </div>
                                 </div>
                               </div>
-                            ))}
-                          </div>
-                          
+                            </div>
+                          ))}
+
                           {/* Add Button */}
-                          <button 
-                            onClick={addCustomField}
-                            className="w-[38px] h-[38px] flex-shrink-0 absolute left-[442px] top-[134px] rounded-full bg-[#0073EA] hover:bg-[#0061d1] transition-colors flex items-center justify-center"
-                          >
-                            <Plus size={20} className="text-white" strokeWidth={2} />
-                          </button>
+                          <div className="w-full flex justify-center mt-4">
+                            <button
+                              onClick={addCustomField}
+                              className="w-[38px] h-[38px] rounded-full bg-[#0073EA] hover:bg-[#0061d1] transition-colors flex items-center justify-center"
+                            >
+                              <Plus size={20} className="text-white" strokeWidth={2} />
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
