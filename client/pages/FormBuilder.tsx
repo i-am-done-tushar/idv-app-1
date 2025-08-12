@@ -55,18 +55,6 @@ export default function FormBuilder() {
     setCustomFields(customFields.filter(field => field.id !== id));
   };
 
-  const duplicateCustomField = (id: number) => {
-    const fieldToDuplicate = customFields.find(field => field.id === id);
-    if (fieldToDuplicate) {
-      const newField = {
-        ...fieldToDuplicate,
-        id: Date.now(),
-        label: fieldToDuplicate.label + " Copy",
-        value: ""
-      };
-      setCustomFields([...customFields, newField]);
-    }
-  };
 
   const toggleRequired = (id: number) => {
     setCustomFields(customFields.map(field =>
