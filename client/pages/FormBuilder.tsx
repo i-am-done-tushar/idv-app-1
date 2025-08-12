@@ -380,6 +380,8 @@ export default function FormBuilder() {
                               </label>
                               <input
                                 type="text"
+                                value={systemFields.address}
+                                onChange={(e) => handleSystemFieldChange('address', e.target.value)}
                                 placeholder="Eg: jhon wick"
                                 className="w-full h-10 px-3 text-[#323238] text-[13px] border border-[#D0D4E4] rounded focus:outline-none focus:ring-2 focus:ring-[#0073EA] focus:border-transparent placeholder:text-[#676879]"
                               />
