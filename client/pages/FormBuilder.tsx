@@ -14,7 +14,8 @@ export default function FormBuilder() {
       id: 1,
       label: "Custom Label",
       type: "Input",
-      required: false
+      required: false,
+      value: ""
     }
   ]);
 
