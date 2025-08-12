@@ -7,6 +7,12 @@ import { NameTemplateModal } from "./NameTemplateModal";
 
 export function TemplatesContent() {
   const [isAddNewDropdownOpen, setIsAddNewDropdownOpen] = useState(false);
+  const [isNameTemplateModalOpen, setIsNameTemplateModalOpen] = useState(false);
+
+  const handleCreateNewTemplate = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    setIsNameTemplateModalOpen(true);
+  };
 
   const handleShowAddNewDropdown = (event: React.MouseEvent) => {
     event.stopPropagation();
@@ -15,6 +21,11 @@ export function TemplatesContent() {
 
   const handleCloseAddNewDropdown = () => {
     setIsAddNewDropdownOpen(false);
+  };
+
+  const handleSaveTemplate = (templateName: string) => {
+    console.log(`Template created with name: ${templateName}`);
+    // Here you would typically make an API call to create the template
   };
 
   return (
