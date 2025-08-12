@@ -279,20 +279,18 @@ export default function FormBuilder() {
                       {/* System Required Fields */}
                       <div className="flex w-[923px] flex-col items-start gap-2">
                         {/* First Name */}
-                        <div className="flex w-[923px] h-20 flex-col items-start gap-4">
-                          <div className="flex h-20 flex-col items-start flex-shrink-0 w-full rounded-lg border border-[#D0D4E4] bg-white">
-                            <div className="flex h-20 items-start flex-shrink-0 w-full">
-                              <div className="flex h-20 py-5 flex-col items-start gap-4 flex-1">
-                                <div className="flex pr-5 items-center gap-2.5 w-full">
-                                  <div className="flex items-center gap-2.5 flex-1 rounded">
-                                    <span className="text-[#323238] text-[13px] font-semibold leading-3">First Name</span>
-                                  </div>
-                                </div>
-                                <div className="flex w-[901px] h-3.5 flex-col justify-center items-start flex-shrink-0 bg-white">
-                                  <span className="w-[76px] h-[13px] flex-shrink-0 text-[#676879] text-[13px] font-normal leading-3">Eg: jhon</span>
-                                </div>
-                              </div>
-                            </div>
+                        <div className="flex w-[923px] flex-col items-start gap-4">
+                          <div className="flex flex-col items-start flex-shrink-0 w-full rounded-lg border border-[#D0D4E4] bg-white p-5">
+                            <label className="text-[#323238] text-[13px] font-semibold leading-3 mb-2">
+                              First Name
+                            </label>
+                            <input
+                              type="text"
+                              value={systemFields.firstName}
+                              onChange={(e) => handleSystemFieldChange('firstName', e.target.value)}
+                              placeholder="Eg: jhon"
+                              className="w-full h-10 px-3 text-[#323238] text-[13px] border border-[#D0D4E4] rounded focus:outline-none focus:ring-2 focus:ring-[#0073EA] focus:border-transparent placeholder:text-[#676879]"
+                            />
                           </div>
                         </div>
 
