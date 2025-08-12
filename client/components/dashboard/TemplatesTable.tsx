@@ -175,7 +175,12 @@ export function TemplatesTable() {
   const handleShowModal = (templateId: number, event: React.MouseEvent) => {
     event.stopPropagation();
     const rect = (event.target as HTMLElement).getBoundingClientRect();
-    const users = getTemplateUsers(templateId);
+
+    // Parse the +N text to get the exact number
+    const clickedText = (event.target as HTMLElement).textContent || '';
+    const additionalCount = parseInt(clickedText.replace('+', '')) || 0;
+
+    const users = getTemplateUsers(templateId, additionalCount);
 
     setModalState({
       isOpen: true,
