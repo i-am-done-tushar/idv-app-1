@@ -33,7 +33,7 @@ function NavItem({ icon, label, isActive = false, opacity = 1 }: NavItemProps) {
 
 export function Sidebar() {
   return (
-    <nav className="flex flex-col w-18 h-[650px] p-4 border-r border-border-color bg-white">
+    <nav className="flex flex-col w-18 min-h-[650px] p-4 border-r border-border-color bg-white">
       <div className="flex flex-col items-center justify-between h-full">
         <div className="flex flex-col items-center gap-3">
           <NavItem
