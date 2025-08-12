@@ -45,7 +45,7 @@ export function TemplatesContent() {
       
       {/* Table Container */}
       <div className="flex flex-1 px-4 pt-0 pb-4">
-        <div className="flex flex-col justify-between flex-1 h-[542px]">
+        <div className="flex flex-col justify-between flex-1 min-h-[542px]">
           <TemplatesTable />
           <Pagination />
         </div>
