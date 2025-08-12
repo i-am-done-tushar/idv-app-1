@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Filter, Search, ChevronDown, MoreHorizontal } from 'lucide-react';
-import { TemplatesTable } from './TemplatesTable';
-import { Pagination } from './Pagination';
-import { AddNewDropdown } from './AddNewDropdown';
+import React, { useState } from "react";
+import { Filter, Search, ChevronDown, MoreHorizontal } from "lucide-react";
+import { TemplatesTable } from "./TemplatesTable";
+import { Pagination } from "./Pagination";
+import { AddNewDropdown } from "./AddNewDropdown";
 
 export function TemplatesContent() {
   const [isAddNewDropdownOpen, setIsAddNewDropdownOpen] = useState(false);
@@ -26,14 +26,16 @@ export function TemplatesContent() {
               Templates
             </h1>
           </div>
-          
+
           <div className="flex items-center gap-1">
             {/* Filter Button */}
             <button className="flex items-center gap-1 h-8 px-2 rounded border border-border-color bg-white">
               <Filter size={16} className="text-placeholder-text" />
-              <span className="text-sm font-medium text-secondary-text">Filter</span>
+              <span className="text-sm font-medium text-secondary-text">
+                Filter
+              </span>
             </button>
-            
+
             {/* Search Input */}
             <div className="flex items-center justify-between w-[200px] h-8 px-3 py-0 rounded border border-border-color bg-white">
               <div className="flex items-center gap-1 flex-1">
@@ -41,7 +43,7 @@ export function TemplatesContent() {
                 <span className="text-sm text-placeholder-text">Search</span>
               </div>
             </div>
-            
+
             {/* Add New Button Group */}
             <div className="flex items-center">
               <button
@@ -60,7 +62,7 @@ export function TemplatesContent() {
           </div>
         </div>
       </div>
-      
+
       {/* Table Container */}
       <div className="flex flex-1 px-4 pt-0 pb-4">
         <div className="flex flex-col justify-between flex-1 min-h-[542px]">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface AddNewDropdownProps {
   isOpen: boolean;
@@ -12,13 +12,11 @@ interface DropdownItemProps {
 
 function DropdownItem({ label, onClick }: DropdownItemProps) {
   return (
-    <div 
+    <div
       className="flex items-center h-8 px-2 rounded bg-white hover:bg-gray-50 transition-colors cursor-pointer"
       onClick={onClick}
     >
-      <span className="text-sm font-medium text-secondary-text">
-        {label}
-      </span>
+      <span className="text-sm font-medium text-secondary-text">{label}</span>
     </div>
   );
 }
@@ -43,21 +41,21 @@ export function AddNewDropdown({ isOpen, onClose }: AddNewDropdownProps) {
       <div
         className="fixed z-50 w-[230px] p-2 bg-white rounded shadow-lg"
         style={{
-          left: '50%',
-          top: '50%',
-          transform: 'translate(-50%, -50%)',
-          boxShadow: '0 6px 20px 0 rgba(0, 0, 0, 0.20)'
+          left: "50%",
+          top: "50%",
+          transform: "translate(-50%, -50%)",
+          boxShadow: "0 6px 20px 0 rgba(0, 0, 0, 0.20)",
         }}
       >
         <div className="flex flex-col gap-px">
           <DropdownItem
             label="Create New Template"
-            onClick={() => handleAction('Create New Template')}
+            onClick={() => handleAction("Create New Template")}
           />
-          
+
           <DropdownItem
             label="Choose Template"
-            onClick={() => handleAction('Choose Template')}
+            onClick={() => handleAction("Choose Template")}
           />
         </div>
       </div>
