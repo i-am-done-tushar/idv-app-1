@@ -17,13 +17,13 @@ export function TemplatesContent() {
           
           <div className="flex items-center gap-1">
             {/* Filter Button */}
-            <button className="flex items-center gap-1 h-8 px-2 py-2.5 rounded bg-white border border-gray-300">
+            <button className="flex items-center gap-1 h-8 px-2 rounded border border-border-color bg-white">
               <Filter size={16} className="text-placeholder-text" />
               <span className="text-sm font-medium text-secondary-text">Filter</span>
             </button>
             
             {/* Search Input */}
-            <div className="flex items-center justify-between w-[200px] h-8 px-3 py-0 rounded border border-gray-300 bg-white">
+            <div className="flex items-center justify-between w-[200px] h-8 px-3 py-0 rounded border border-border-color bg-white">
               <div className="flex items-center gap-1 flex-1">
                 <Search size={18} className="text-placeholder-text" />
                 <span className="text-sm text-placeholder-text">Search</span>
