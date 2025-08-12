@@ -84,6 +84,30 @@ export default function FormBuilder() {
     ));
   };
 
+  const handleTypeDropdownClick = (fieldId: number, event: React.MouseEvent) => {
+    event.stopPropagation();
+    const rect = (event.target as HTMLElement).getBoundingClientRect();
+    setSelectorPosition({
+      x: rect.left,
+      y: rect.bottom + 4
+    });
+    setSelectedFieldId(fieldId);
+    setFieldTypeSelectorOpen(true);
+  };
+
+  const handleFieldTypeSelect = (type: string) => {
+    if (selectedFieldId) {
+      updateCustomField(selectedFieldId, { type });
+    }
+    setFieldTypeSelectorOpen(false);
+    setSelectedFieldId(null);
+  };
+
+  const handleFieldTypeSelectorClose = () => {
+    setFieldTypeSelectorOpen(false);
+    setSelectedFieldId(null);
+  };
+
   return (
     <div className="flex flex-col items-start bg-white h-screen">
       {/* Header */}
