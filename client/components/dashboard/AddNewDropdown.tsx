@@ -23,7 +23,11 @@ function DropdownItem({ label, onClick }: DropdownItemProps) {
   );
 }
 
-export function AddNewDropdown({ isOpen, onClose, onCreateNewTemplate }: AddNewDropdownProps) {
+export function AddNewDropdown({
+  isOpen,
+  onClose,
+  onCreateNewTemplate,
+}: AddNewDropdownProps) {
   const navigate = useNavigate();
 
   if (!isOpen) return null;
@@ -35,7 +39,7 @@ export function AddNewDropdown({ isOpen, onClose, onCreateNewTemplate }: AddNewD
 
   const handleChooseTemplate = () => {
     onClose(); // Close the dropdown first
-    navigate('/choose-template');
+    navigate("/choose-template");
   };
 
   const handleAction = (action: string) => {

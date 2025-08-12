@@ -8,7 +8,11 @@ interface NameTemplateModalProps {
   onSave?: (templateName: string) => void;
 }
 
-export function NameTemplateModal({ isOpen, onClose, onSave }: NameTemplateModalProps) {
+export function NameTemplateModal({
+  isOpen,
+  onClose,
+  onSave,
+}: NameTemplateModalProps) {
   const [templateName, setTemplateName] = useState("");
   const navigate = useNavigate();
 
@@ -19,7 +23,7 @@ export function NameTemplateModal({ isOpen, onClose, onSave }: NameTemplateModal
       onSave?.(templateName.trim());
       setTemplateName("");
       onClose();
-      navigate('/form-builder');
+      navigate("/form-builder");
     }
   };
 
@@ -76,7 +80,7 @@ export function NameTemplateModal({ isOpen, onClose, onSave }: NameTemplateModal
                 <label className="text-[13px] font-medium leading-[18px] text-[#172B4D]">
                   Template Name
                 </label>
-                
+
                 {/* Input */}
                 <input
                   type="text"
@@ -97,20 +101,26 @@ export function NameTemplateModal({ isOpen, onClose, onSave }: NameTemplateModal
             onClick={handleCancel}
             className="flex h-8 px-4 py-2.5 items-center justify-center gap-1 rounded bg-white hover:bg-gray-50 transition-colors"
           >
-            <span className="text-[13px] font-medium text-[#505258]">Cancel</span>
+            <span className="text-[13px] font-medium text-[#505258]">
+              Cancel
+            </span>
           </button>
           <button
             onClick={handleSave}
             disabled={!templateName.trim()}
             className="flex h-8 px-4 py-2.5 items-center justify-center gap-0.5 rounded border border-[#0073EA] bg-[#0073EA] hover:bg-[#0061d1] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            <span className="text-[13px] font-medium text-white">Save & Continue</span>
+            <span className="text-[13px] font-medium text-white">
+              Save & Continue
+            </span>
           </button>
         </div>
 
         {/* Standard text at bottom */}
         <div className="absolute -bottom-8 left-0">
-          <span className="text-xl font-bold leading-[30px] text-[#172B4D]">Standard</span>
+          <span className="text-xl font-bold leading-[30px] text-[#172B4D]">
+            Standard
+          </span>
         </div>
       </div>
     </>
