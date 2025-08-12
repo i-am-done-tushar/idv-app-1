@@ -8,7 +8,7 @@ export function Pagination() {
         Rows per page
       </span>
       
-      <div className="flex items-center justify-center h-7 px-2 gap-2 rounded border border-gray-300 bg-white">
+      <div className="flex items-center justify-center h-7 px-2 gap-2 rounded border border-border-color bg-white">
         <span className="text-sm font-medium text-placeholder-text">12</span>
         <ChevronDown size={20} className="text-placeholder-text" />
       </div>
