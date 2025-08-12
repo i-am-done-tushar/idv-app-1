@@ -1,9 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Filter, Search, ChevronDown, MoreHorizontal } from 'lucide-react';
 import { TemplatesTable } from './TemplatesTable';
 import { Pagination } from './Pagination';
+import { AddNewDropdown } from './AddNewDropdown';
 
 export function TemplatesContent() {
+  const [addNewDropdownState, setAddNewDropdownState] = useState<{
+    isOpen: boolean;
+    position: { x: number; y: number };
+  }>({ isOpen: false, position: { x: 0, y: 0 } });
+
+  const handleShowAddNewDropdown = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    const rect = (event.target as HTMLElement).getBoundingClientRect();
+
+    setAddNewDropdownState({
+      isOpen: true,
+      position: {
+        x: rect.left,
+        y: rect.bottom + 4 // Position dropdown below the button
+      }
+    });
+  };
+
+  const handleCloseAddNewDropdown = () => {
+    setAddNewDropdownState(prev => ({ ...prev, isOpen: false }));
+  };
+
   return (
     <div className="flex flex-col flex-1 bg-white">
       {/* Sub Header */}
@@ -32,10 +55,16 @@ export function TemplatesContent() {
             
             {/* Add New Button Group */}
             <div className="flex items-center">
-              <button className="flex items-center h-8 px-3 gap-3 rounded-l bg-primary text-white">
+              <button
+                className="flex items-center h-8 px-3 gap-3 rounded-l bg-primary text-white hover:bg-blue-600 transition-colors"
+                onClick={handleShowAddNewDropdown}
+              >
                 <span className="text-xs font-medium">Add New</span>
               </button>
-              <button className="flex items-center justify-center h-8 px-2 rounded-r bg-primary border-l border-blue-600 text-white">
+              <button
+                className="flex items-center justify-center h-8 px-2 rounded-r bg-primary border-l border-blue-600 text-white hover:bg-blue-600 transition-colors"
+                onClick={handleShowAddNewDropdown}
+              >
                 <ChevronDown size={16} />
               </button>
             </div>
@@ -50,6 +79,12 @@ export function TemplatesContent() {
           <Pagination />
         </div>
       </div>
+
+      <AddNewDropdown
+        isOpen={addNewDropdownState.isOpen}
+        onClose={handleCloseAddNewDropdown}
+        position={addNewDropdownState.position}
+      />
     </div>
   );
 }
