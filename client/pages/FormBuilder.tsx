@@ -399,12 +399,16 @@ export default function FormBuilder() {
                                           placeholder="Enter field label"
                                         />
                                       </div>
-                                      <div className="flex w-[188px] h-[42px] px-3 justify-between items-center rounded border border-[#D0D4E4]">
+                                      <button
+                                        ref={typeDropdownRef}
+                                        onClick={(e) => handleTypeDropdownClick(field.id, e)}
+                                        className="flex w-[188px] h-[42px] px-3 justify-between items-center rounded border border-[#D0D4E4] hover:bg-gray-50 transition-colors"
+                                      >
                                         <span className="text-[#323238] text-sm font-semibold">{field.type}</span>
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M16.59 8.59375L12 13.1737L7.41 8.59375L6 10.0037L12 16.0037L18 10.0037L16.59 8.59375Z" fill="#C3C6D4"/>
                                         </svg>
-                                      </div>
+                                      </button>
                                     </div>
                                     <div className="flex h-16 pr-7 justify-end items-center gap-2.5 w-full bg-white">
                                       <div className="flex flex-col justify-center items-end gap-2.5 flex-1 h-full border-t border-[#D0D4E4]">
