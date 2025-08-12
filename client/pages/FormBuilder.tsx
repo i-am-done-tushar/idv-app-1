@@ -373,75 +373,62 @@ export default function FormBuilder() {
                         {/* Custom Fields */}
                         <div className="flex flex-col items-start gap-2 w-full">
                           {customFields.map((field, index) => (
-                            <div key={field.id} className="w-[923px] relative">
-                              <div className="flex flex-col items-start rounded-lg border-r border-b border-l border-[#0073EA] bg-white h-[153px]">
-                                {/* Blue top border */}
-                                <div className="flex h-2 px-2.5 items-start gap-2.5 w-full bg-[#0073EA]"></div>
+                            <div key={field.id} className="flex w-[923px] flex-col items-start gap-4">
+                              <div className="flex flex-col items-start flex-shrink-0 w-full rounded-lg border border-[#D0D4E4] bg-white p-5 relative group">
+                                {/* Delete button - appears on hover */}
+                                <button
+                                  onClick={() => removeCustomField(field.id)}
+                                  className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity flex w-6 h-6 justify-center items-center rounded-full hover:bg-gray-100"
+                                >
+                                  <Trash2 size={16} className="text-[#676879]" strokeWidth={1.5} />
+                                </button>
 
-                                <div className="flex items-start w-full flex-1">
-                                  {/* Drag Handle */}
-                                  <div className="flex w-[22px] items-center justify-center h-full py-4">
-                                    <GripVertical size={22} className="text-[#676879] flex-shrink-0" />
+                                {/* Field Label */}
+                                <div className="flex items-center gap-2 mb-2 w-full">
+                                  <input
+                                    type="text"
+                                    value={field.label}
+                                    onChange={(e) => updateCustomField(field.id, { label: e.target.value })}
+                                    className="text-[#323238] text-[13px] font-semibold leading-3 bg-transparent border-none outline-none flex-1"
+                                    placeholder="Enter field name"
+                                  />
+                                  {field.required && (
+                                    <span className="text-red-500 text-xs">*</span>
+                                  )}
+                                </div>
+
+                                {/* Field Input */}
+                                <input
+                                  type="text"
+                                  value={field.value}
+                                  onChange={(e) => updateCustomField(field.id, { value: e.target.value })}
+                                  placeholder={`Eg: Enter ${field.label.toLowerCase()}`}
+                                  className="w-full h-10 px-3 text-[#323238] text-[13px] border border-[#D0D4E4] rounded focus:outline-none focus:ring-2 focus:ring-[#0073EA] focus:border-transparent placeholder:text-[#676879]"
+                                />
+
+                                {/* Field Options */}
+                                <div className="flex items-center justify-between w-full mt-3 pt-3 border-t border-[#D0D4E4]">
+                                  <div className="flex items-center gap-2">
+                                    <span className="text-[#505258] text-xs">Type:</span>
+                                    <button
+                                      onClick={(e) => handleTypeDropdownClick(field.id, e)}
+                                      className="text-[#0073EA] text-xs hover:underline"
+                                    >
+                                      {field.type}
+                                    </button>
                                   </div>
-
-                                  {/* Field Content */}
-                                  <div className="flex flex-col items-start flex-1">
-                                    {/* Top Row: Label and Type */}
-                                    <div className="flex py-5 pr-5 items-center gap-2.5 w-full">
-                                      <div className="flex h-[42px] flex-1 rounded bg-[#F1F2F4]">
-                                        <input
-                                          type="text"
-                                          value={field.label}
-                                          onChange={(e) => updateCustomField(field.id, { label: e.target.value })}
-                                          className="w-full h-full px-3 bg-[#F1F2F4] text-[#323238] text-sm font-semibold border-none outline-none rounded"
-                                          placeholder="Enter field label"
-                                        />
-                                      </div>
-                                      <button
-                                        onClick={(e) => handleTypeDropdownClick(field.id, e)}
-                                        className="flex w-[188px] h-[42px] px-3 justify-between items-center rounded border border-[#D0D4E4] hover:bg-gray-50 transition-colors"
-                                      >
-                                        <span className="text-[#323238] text-sm font-semibold">{field.type}</span>
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                          <path d="M16.59 8.59375L12 13.1737L7.41 8.59375L6 10.0037L12 16.0037L18 10.0037L16.59 8.59375Z" fill="#C3C6D4"/>
-                                        </svg>
-                                      </button>
-                                    </div>
-
-                                    {/* Bottom Row: Actions */}
-                                    <div className="flex h-16 pr-7 justify-end items-center gap-2.5 w-full bg-white">
-                                      <div className="flex flex-col justify-center items-end gap-2.5 flex-1 h-full border-t border-[#D0D4E4]">
-                                        <div className="flex items-center gap-3">
-                                          <div className="flex items-center gap-px">
-                                            <button
-                                              onClick={() => duplicateCustomField(field.id)}
-                                              className="flex w-8 h-8 justify-center items-center gap-2.5 rounded-full hover:bg-gray-100 transition-colors"
-                                            >
-                                              <Copy size={24} className="text-[#676879] flex-shrink-0" strokeWidth={1.5} />
-                                            </button>
-                                            <button
-                                              onClick={() => removeCustomField(field.id)}
-                                              className="flex w-8 h-8 justify-center items-center gap-2.5 rounded-full hover:bg-gray-100 transition-colors"
-                                            >
-                                              <Trash2 size={24} className="text-[#676879] flex-shrink-0" strokeWidth={1.5} />
-                                            </button>
-                                          </div>
-                                          <div className="flex pl-4 items-center gap-1 h-full border-l border-[#D0D4E4]">
-                                            <span className="text-[#323238] text-sm font-semibold">Required</span>
-                                            <button
-                                              onClick={() => toggleRequired(field.id)}
-                                              className={`flex w-6 p-0.5 items-center gap-2 rounded-full transition-colors ${
-                                                field.required ? 'bg-[#0073EA]' : 'bg-[#A3ADBA]'
-                                              }`}
-                                            >
-                                              <div className={`w-2.5 h-2.5 flex-shrink-0 rounded-full bg-white transition-transform ${
-                                                field.required ? 'translate-x-3' : 'translate-x-0'
-                                              }`}></div>
-                                            </button>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
+                                  <div className="flex items-center gap-2">
+                                    <span className="text-[#505258] text-xs">Required:</span>
+                                    <button
+                                      onClick={() => toggleRequired(field.id)}
+                                      className={`flex w-5 p-0.5 items-center gap-1 rounded-full transition-colors ${
+                                        field.required ? 'bg-[#0073EA]' : 'bg-[#A3ADBA]'
+                                      }`}
+                                    >
+                                      <div className={`w-2 h-2 flex-shrink-0 rounded-full bg-white transition-transform ${
+                                        field.required ? 'translate-x-2' : 'translate-x-0'
+                                      }`}></div>
+                                    </button>
                                   </div>
                                 </div>
                               </div>
