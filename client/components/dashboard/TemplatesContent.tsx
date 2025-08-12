@@ -87,6 +87,12 @@ export function TemplatesContent() {
         isOpen={isAddNewDropdownOpen}
         onClose={handleCloseAddNewDropdown}
       />
+
+      <NameTemplateModal
+        isOpen={isNameTemplateModalOpen}
+        onClose={() => setIsNameTemplateModalOpen(false)}
+        onSave={handleSaveTemplate}
+      />
     </div>
   );
 }
