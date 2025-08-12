@@ -86,6 +86,7 @@ export function TemplatesContent() {
       <AddNewDropdown
         isOpen={isAddNewDropdownOpen}
         onClose={handleCloseAddNewDropdown}
+        onCreateNewTemplate={() => setIsNameTemplateModalOpen(true)}
       />
 
       <NameTemplateModal
