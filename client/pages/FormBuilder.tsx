@@ -21,8 +21,6 @@ export default function FormBuilder() {
   ]);
   const [fieldTypeSelectorOpen, setFieldTypeSelectorOpen] = useState(false);
   const [selectedFieldId, setSelectedFieldId] = useState<number | null>(null);
-  const [selectorPosition, setSelectorPosition] = useState<{ x: number; y: number } | undefined>();
-  const typeDropdownRef = useRef<HTMLDivElement>(null);
 
   const handleBack = () => {
     navigate(-1);
