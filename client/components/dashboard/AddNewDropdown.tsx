@@ -63,7 +63,7 @@ export function AddNewDropdown({ isOpen, onClose }: AddNewDropdownProps) {
         <div className="flex flex-col gap-px">
           <DropdownItem
             label="Create New Template"
-            onClick={() => handleAction("Create New Template")}
+            onClick={handleCreateNewTemplate}
           />
 
           <DropdownItem
@@ -72,6 +72,12 @@ export function AddNewDropdown({ isOpen, onClose }: AddNewDropdownProps) {
           />
         </div>
       </div>
+
+      <NameTemplateModal
+        isOpen={isNameTemplateModalOpen}
+        onClose={() => setIsNameTemplateModalOpen(false)}
+        onSave={handleSaveTemplate}
+      />
     </>
   );
 }
