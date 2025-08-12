@@ -60,7 +60,7 @@ export function TemplatesContent() {
             <div className="flex items-center">
               <button
                 className="flex items-center h-8 px-3 gap-3 rounded-l bg-primary text-white hover:bg-blue-600 transition-colors"
-                onClick={handleShowAddNewDropdown}
+                onClick={handleCreateNewTemplate}
               >
                 <span className="text-xs font-medium">Add New</span>
               </button>
