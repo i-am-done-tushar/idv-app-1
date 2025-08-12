@@ -8,8 +8,7 @@ export default function FormBuilder() {
   const [systemFields, setSystemFields] = useState({
     firstName: "",
     lastName: "",
-    email: "",
-    address: ""
+    email: ""
   });
   const [customFields, setCustomFields] = useState<Array<{
     id: number;
