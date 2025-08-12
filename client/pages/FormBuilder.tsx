@@ -369,24 +369,6 @@ export default function FormBuilder() {
                           </p>
                         </div>
 
-                        {/* Standard Additional Fields */}
-                        <div className="flex flex-col items-start gap-2 w-full mb-6">
-                          {/* Address Field */}
-                          <div className="flex w-[923px] flex-col items-start gap-4">
-                            <div className="flex flex-col items-start flex-shrink-0 w-full rounded-lg border border-[#D0D4E4] bg-white p-5">
-                              <label className="text-[#323238] text-[13px] font-semibold leading-3 mb-2">
-                                Address
-                              </label>
-                              <input
-                                type="text"
-                                value={systemFields.address}
-                                onChange={(e) => handleSystemFieldChange('address', e.target.value)}
-                                placeholder="Eg: jhon wick"
-                                className="w-full h-10 px-3 text-[#323238] text-[13px] border border-[#D0D4E4] rounded focus:outline-none focus:ring-2 focus:ring-[#0073EA] focus:border-transparent placeholder:text-[#676879]"
-                              />
-                            </div>
-                          </div>
-                        </div>
 
                         {/* Custom Fields */}
                         <div className="flex flex-col items-start gap-2 w-full">
