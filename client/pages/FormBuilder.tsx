@@ -10,15 +10,13 @@ export default function FormBuilder() {
     lastName: "",
     email: ""
   });
-  const [customFields, setCustomFields] = useState([
-    {
-      id: 1,
-      label: "Custom Label",
-      type: "Input",
-      required: false,
-      value: ""
-    }
-  ]);
+  const [customFields, setCustomFields] = useState<Array<{
+    id: number;
+    label: string;
+    type: string;
+    required: boolean;
+    value: string;
+  }>>([]);
   const [fieldTypeSelectorOpen, setFieldTypeSelectorOpen] = useState(false);
   const [selectedFieldId, setSelectedFieldId] = useState<number | null>(null);
 
