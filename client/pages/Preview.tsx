@@ -276,13 +276,16 @@ export default function Preview() {
                   
                   <div className="flex px-9 py-5 flex-col items-start w-full border-t border-[#DEDEDD] bg-white">
                     <div className="flex flex-col items-start gap-6 w-full">
+                      {/* System Fields Row */}
                       <div className="flex items-start gap-6 w-full">
                         <div className="flex flex-col items-start gap-2 flex-1">
                           <label className="text-[#172B4D] text-[13px] font-medium leading-[18px]">
                             First Name
                           </label>
                           <div className="flex h-[38px] px-3 items-center w-full rounded border border-[#C3C6D4] bg-white">
-                            <span className="text-[#676879] text-[13px]">Input</span>
+                            <span className="text-[#676879] text-[13px]">
+                              {formData.systemFields?.firstName || "Input"}
+                            </span>
                           </div>
                         </div>
                         <div className="flex flex-col items-start gap-2 flex-1">
@@ -290,7 +293,9 @@ export default function Preview() {
                             Last Name
                           </label>
                           <div className="flex h-[38px] px-3 items-center w-full rounded border border-[#C3C6D4] bg-white">
-                            <span className="text-[#676879] text-[13px]">Input</span>
+                            <span className="text-[#676879] text-[13px]">
+                              {formData.systemFields?.lastName || "Input"}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -300,18 +305,31 @@ export default function Preview() {
                             Email
                           </label>
                           <div className="flex h-[38px] px-3 items-center w-full rounded border border-[#C3C6D4] bg-white">
-                            <span className="text-[#676879] text-[13px]">Input</span>
-                          </div>
-                        </div>
-                        <div className="flex flex-col items-start gap-2 w-[452px]">
-                          <label className="text-[#172B4D] text-[13px] font-medium leading-[18px]">
-                            Date Of Birth
-                          </label>
-                          <div className="flex h-[38px] px-3 items-center w-full rounded border border-[#C3C6D4] bg-white">
-                            <span className="text-[#676879] text-[13px]">DD/MM/YYYY</span>
+                            <span className="text-[#676879] text-[13px]">
+                              {formData.systemFields?.email || "Input"}
+                            </span>
                           </div>
                         </div>
                       </div>
+
+                      {/* Custom Fields */}
+                      {formData.customFields && formData.customFields.length > 0 && (
+                        <div className="flex flex-col items-start gap-4 w-full">
+                          {formData.customFields.map((field: any, index: number) => (
+                            <div key={field.id || index} className="flex flex-col items-start gap-2 w-full">
+                              <label className="text-[#172B4D] text-[13px] font-medium leading-[18px]">
+                                {field.label}
+                                {field.required && <span className="text-red-500 ml-1">*</span>}
+                              </label>
+                              <div className="flex h-[38px] px-3 items-center w-full rounded border border-[#C3C6D4] bg-white">
+                                <span className="text-[#676879] text-[13px]">
+                                  {field.value || `${field.type} input`}
+                                </span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
