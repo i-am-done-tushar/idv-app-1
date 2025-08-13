@@ -424,10 +424,14 @@ export default function Preview() {
                           </div>
                           <div className="flex flex-col items-start gap-2 flex-1">
                             <h4 className="text-[#172B4D] text-[13px] font-medium leading-[18px]">
-                              Allow Retries Before Rejection
+                              {formData.documentHandling === "retry"
+                                ? "Allow Retries Before Rejection"
+                                : "Reject Immediately"}
                             </h4>
                             <p className="text-[#505258] text-[13px] leading-5">
-                              Let users reattempt uploading the document before it's finally rejected.
+                              {formData.documentHandling === "retry"
+                                ? "Let users reattempt uploading the document before it's finally rejected."
+                                : "Skip retry and reject unclear documents without further attempts."}
                             </p>
                           </div>
                         </div>
