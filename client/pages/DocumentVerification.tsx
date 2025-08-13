@@ -1261,7 +1261,7 @@ export default function DocumentVerification() {
                       </p>
                     </div>
                   </div>
-                  <div className="flex w-[308px] px-7 py-3 items-center gap-2 rounded opacity-50">
+                  <div className="flex w-[308px] px-7 py-3 items-center gap-2 rounded bg-[#E6F1FD] border border-[#DEDEDD]">
                     <div className="flex flex-col items-start gap-2 flex-1">
                       <div className="flex items-center gap-1 w-full">
                         <h4 className="text-[#292F4C] text-sm font-bold leading-[13px]">
