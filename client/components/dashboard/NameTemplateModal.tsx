@@ -13,6 +13,7 @@ export function NameTemplateModal({
   isOpen,
   onClose,
   onSave,
+  shouldNavigate = true,
 }: NameTemplateModalProps) {
   const [templateName, setTemplateName] = useState("");
   const navigate = useNavigate();
