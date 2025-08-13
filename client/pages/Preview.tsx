@@ -12,6 +12,7 @@ import { SuccessModal } from "../components/ui/SuccessModal";
 export default function Preview() {
   const navigate = useNavigate();
   const [currentView, setCurrentView] = useState<"admin" | "receiver">("admin");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   // User configuration data
   const [formData, setFormData] = useState({
