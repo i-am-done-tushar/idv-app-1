@@ -203,7 +203,10 @@ export default function Preview() {
                 </h1>
               </div>
               <div className="flex items-center gap-1">
-                <button className="flex h-8 px-2 py-[9px] justify-center items-center gap-1 rounded border border-[#0073EA] bg-white hover:bg-[#F6F7FB] transition-colors">
+                <button
+                  onClick={handleSaveAndSendInvite}
+                  className="flex h-8 px-2 py-[9px] justify-center items-center gap-1 rounded border border-[#0073EA] bg-white hover:bg-[#F6F7FB] transition-colors"
+                >
                   <Send size={16} className="text-[#0073EA]" />
                   <span className="text-[#0073EA] text-[13px] font-medium">
                     Save & Send Invite
