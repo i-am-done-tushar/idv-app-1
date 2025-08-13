@@ -29,9 +29,12 @@ export default function BiometricVerification() {
 
   const handleNext = () => {
     // Save biometric verification data to localStorage
-    localStorage.setItem('biometricVerificationData', JSON.stringify({
-      biometricSettings
-    }));
+    localStorage.setItem(
+      "biometricVerificationData",
+      JSON.stringify({
+        biometricSettings,
+      }),
+    );
     navigate("/preview");
   };
 
@@ -311,7 +314,8 @@ export default function BiometricVerification() {
                     </div>
                     <div className="flex px-3 justify-center items-center gap-2.5 w-full ml-7">
                       <p className="flex-1 text-[#505258] text-[13px] font-normal leading-5">
-                        Configure selfie capture retries, liveness score thresholds, and biometric data storage.
+                        Configure selfie capture retries, liveness score
+                        thresholds, and biometric data storage.
                       </p>
                     </div>
                   </div>
@@ -325,7 +329,8 @@ export default function BiometricVerification() {
                           Retry Attempts for Selfie Capture
                         </h3>
                         <p className="text-[#172B4D] text-[13px] leading-5">
-                          Define how many times a user can retry if the selfie capture fails.
+                          Define how many times a user can retry if the selfie
+                          capture fails.
                         </p>
                       </div>
 
@@ -367,7 +372,8 @@ export default function BiometricVerification() {
                           Liveness Confidence Threshold (%)
                         </h3>
                         <p className="text-[#172B4D] text-[13px] leading-5">
-                          Choose what should happen if a user's liveness score does not meet the required threshold.
+                          Choose what should happen if a user's liveness score
+                          does not meet the required threshold.
                         </p>
                       </div>
 
@@ -378,7 +384,9 @@ export default function BiometricVerification() {
                             <input
                               type="radio"
                               name="livenessHandling"
-                              checked={biometricSettings.livenessHandling === "retry"}
+                              checked={
+                                biometricSettings.livenessHandling === "retry"
+                              }
                               onChange={() =>
                                 setBiometricSettings((prev) => ({
                                   ...prev,
@@ -403,7 +411,9 @@ export default function BiometricVerification() {
                           <input
                             type="radio"
                             name="livenessHandling"
-                            checked={biometricSettings.livenessHandling === "block"}
+                            checked={
+                              biometricSettings.livenessHandling === "block"
+                            }
                             onChange={() =>
                               setBiometricSettings((prev) => ({
                                 ...prev,
@@ -431,7 +441,8 @@ export default function BiometricVerification() {
                           Biometric Data Retention
                         </h3>
                         <p className="text-[#172B4D] text-[13px] leading-5">
-                          Choose whether to store biometric/selfie data and define retention duration.
+                          Choose whether to store biometric/selfie data and
+                          define retention duration.
                         </p>
                       </div>
 

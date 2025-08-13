@@ -8,14 +8,19 @@ interface SuccessModalProps {
   message: string;
 }
 
-export function SuccessModal({ isOpen, onClose, title, message }: SuccessModalProps) {
+export function SuccessModal({
+  isOpen,
+  onClose,
+  title,
+  message,
+}: SuccessModalProps) {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
       {/* Overlay */}
       <div className="fixed inset-0 bg-black bg-opacity-50" onClick={onClose} />
-      
+
       {/* Modal */}
       <div className="relative flex w-[540px] p-6 items-start gap-4 rounded-lg bg-white shadow-lg">
         {/* Success Icon */}

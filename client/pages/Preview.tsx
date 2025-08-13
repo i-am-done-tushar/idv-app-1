@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  ChevronLeft,
-  Minus,
-  Eye,
-  Save,
-  Send,
-} from "lucide-react";
+import { ChevronLeft, Minus, Eye, Save, Send } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { SuccessModal } from "../components/ui/SuccessModal";
 
@@ -18,24 +12,34 @@ export default function Preview() {
   const [formData, setFormData] = useState({
     systemFields: { firstName: "", lastName: "", email: "" },
     customFields: [],
-    uploadOptions: { allowUploadFromDevice: false, allowCaptureViaWebcam: false },
+    uploadOptions: {
+      allowUploadFromDevice: false,
+      allowCaptureViaWebcam: false,
+    },
     documentHandling: "reject" as "reject" | "retry",
     countries: [],
-    biometricSettings: { maxRetries: "4", livenessHandling: "retry" as "retry" | "block", dataStorage: true, retentionPeriod: "6" }
+    biometricSettings: {
+      maxRetries: "4",
+      livenessHandling: "retry" as "retry" | "block",
+      dataStorage: true,
+      retentionPeriod: "6",
+    },
   });
 
   useEffect(() => {
     // Load user data from localStorage if available
-    const savedFormData = localStorage.getItem('formBuilderData');
-    const savedDocumentData = localStorage.getItem('documentVerificationData');
-    const savedBiometricData = localStorage.getItem('biometricVerificationData');
+    const savedFormData = localStorage.getItem("formBuilderData");
+    const savedDocumentData = localStorage.getItem("documentVerificationData");
+    const savedBiometricData = localStorage.getItem(
+      "biometricVerificationData",
+    );
 
     if (savedFormData || savedDocumentData || savedBiometricData) {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
         ...(savedFormData ? JSON.parse(savedFormData) : {}),
         ...(savedDocumentData ? JSON.parse(savedDocumentData) : {}),
-        ...(savedBiometricData ? JSON.parse(savedBiometricData) : {})
+        ...(savedBiometricData ? JSON.parse(savedBiometricData) : {}),
       }));
     }
   }, []);
@@ -54,20 +58,22 @@ export default function Preview() {
       id: Date.now(),
       name: "New Template",
       ...formData,
-      createdDate: new Date().toLocaleDateString('en-GB'),
+      createdDate: new Date().toLocaleDateString("en-GB"),
       createdBy: "Current User",
       status: "Completed" as const,
-      lastUpdated: new Date().toLocaleDateString('en-GB'),
+      lastUpdated: new Date().toLocaleDateString("en-GB"),
       invitees: [
         { initials: "CU", color: "avatar-1" },
-        { initials: "+0", color: "grey-bg" }
-      ]
+        { initials: "+0", color: "grey-bg" },
+      ],
     };
 
     // Save to localStorage
-    const existingTemplates = JSON.parse(localStorage.getItem('savedTemplates') || '[]');
+    const existingTemplates = JSON.parse(
+      localStorage.getItem("savedTemplates") || "[]",
+    );
     existingTemplates.unshift(templateData);
-    localStorage.setItem('savedTemplates', JSON.stringify(existingTemplates));
+    localStorage.setItem("savedTemplates", JSON.stringify(existingTemplates));
 
     // Show success modal
     setShowSuccessModal(true);
@@ -266,7 +272,8 @@ export default function Preview() {
                     </div>
                     <div className="flex justify-center items-center gap-2 w-full">
                       <p className="flex-1 text-[#505258] text-[13px] font-normal leading-[18px]">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry.
                       </p>
                     </div>
                   </div>
@@ -280,7 +287,8 @@ export default function Preview() {
                     </div>
                     <div className="flex justify-center items-center gap-2 w-full">
                       <p className="flex-1 text-[#505258] text-[13px] font-normal leading-[18px]">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry.
                       </p>
                     </div>
                   </div>
@@ -299,17 +307,22 @@ export default function Preview() {
                 {/* Personal Information Section */}
                 <div className="flex flex-col items-start w-full rounded border border-[#DEDEDD] bg-white">
                   <div className="flex px-2 py-4 items-center gap-2 w-full">
-                    <Minus size={18} className="text-[#323238]" strokeWidth={1.5} />
+                    <Minus
+                      size={18}
+                      className="text-[#323238]"
+                      strokeWidth={1.5}
+                    />
                     <h2 className="text-[#172B4D] text-base font-bold leading-3">
                       Personal Information
                     </h2>
                   </div>
                   <div className="flex px-3 items-center gap-2.5 w-full ml-7 pb-1">
                     <p className="flex-1 text-[#172B4D] text-[13px] font-normal leading-5">
-                      Please provide your basic personal information to begin the identity verification process.
+                      Please provide your basic personal information to begin
+                      the identity verification process.
                     </p>
                   </div>
-                  
+
                   <div className="flex px-9 py-5 flex-col items-start w-full border-t border-[#DEDEDD] bg-white">
                     <div className="flex flex-col items-start gap-6 w-full">
                       {/* System Fields Row */}
@@ -349,23 +362,33 @@ export default function Preview() {
                       </div>
 
                       {/* Custom Fields */}
-                      {formData.customFields && formData.customFields.length > 0 && (
-                        <div className="flex flex-col items-start gap-4 w-full">
-                          {formData.customFields.map((field: any, index: number) => (
-                            <div key={field.id || index} className="flex flex-col items-start gap-2 w-full">
-                              <label className="text-[#172B4D] text-[13px] font-medium leading-[18px]">
-                                {field.label}
-                                {field.required && <span className="text-red-500 ml-1">*</span>}
-                              </label>
-                              <div className="flex h-[38px] px-3 items-center w-full rounded border border-[#C3C6D4] bg-white">
-                                <span className="text-[#676879] text-[13px]">
-                                  {field.value || `${field.type} input`}
-                                </span>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                      {formData.customFields &&
+                        formData.customFields.length > 0 && (
+                          <div className="flex flex-col items-start gap-4 w-full">
+                            {formData.customFields.map(
+                              (field: any, index: number) => (
+                                <div
+                                  key={field.id || index}
+                                  className="flex flex-col items-start gap-2 w-full"
+                                >
+                                  <label className="text-[#172B4D] text-[13px] font-medium leading-[18px]">
+                                    {field.label}
+                                    {field.required && (
+                                      <span className="text-red-500 ml-1">
+                                        *
+                                      </span>
+                                    )}
+                                  </label>
+                                  <div className="flex h-[38px] px-3 items-center w-full rounded border border-[#C3C6D4] bg-white">
+                                    <span className="text-[#676879] text-[13px]">
+                                      {field.value || `${field.type} input`}
+                                    </span>
+                                  </div>
+                                </div>
+                              ),
+                            )}
+                          </div>
+                        )}
                     </div>
                   </div>
                 </div>
@@ -379,10 +402,12 @@ export default function Preview() {
                   </div>
                   <div className="flex px-3 items-center gap-2.5 w-full ml-7 pb-1">
                     <p className="flex-1 text-[#172B4D] text-[13px] font-normal leading-5">
-                      Choose a valid government-issued ID (like a passport, driver's license, or national ID) and upload a clear photo of it.
+                      Choose a valid government-issued ID (like a passport,
+                      driver's license, or national ID) and upload a clear photo
+                      of it.
                     </p>
                   </div>
-                  
+
                   <div className="flex px-9 py-4 flex-col items-start gap-6 w-full border-t border-[#DEDEDD] bg-white">
                     {/* User Upload Options */}
                     <div className="flex flex-col items-start gap-4 w-full">
@@ -391,16 +416,25 @@ export default function Preview() {
                           User Upload Options
                         </h3>
                         <p className="text-[#172B4D] text-[13px] leading-5">
-                          Select how users are allowed to submit documents during the process.
+                          Select how users are allowed to submit documents
+                          during the process.
                         </p>
                       </div>
-                      
+
                       <div className="flex px-6 py-5 flex-col items-start gap-5 w-full rounded bg-[#F6F7FB]">
                         {formData.uploadOptions?.allowUploadFromDevice && (
                           <div className="flex items-start gap-2 w-full pb-5 border-b border-[#D0D4E4]">
                             <div className="flex w-[18px] h-[18px] items-center justify-center rounded-full bg-[#258750]">
-                              <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                                <path d="M4.96526 7.24452L8.49526 3.71453C8.5914 3.61839 8.70547 3.57031 8.83745 3.57031C8.96944 3.57031 9.08351 3.61839 9.17965 3.71453C9.2758 3.81068 9.32387 3.92474 9.32387 4.05673C9.32387 4.18872 9.2758 4.30278 9.17965 4.39893L5.30345 8.27514C5.2073 8.37128 5.09457 8.41935 4.96526 8.41935C4.83595 8.41935 4.72322 8.37128 4.62707 8.27514L2.81805 6.46612C2.72191 6.36997 2.67517 6.25591 2.67784 6.12392C2.68052 5.99193 2.72993 5.87786 2.82608 5.78172C2.92222 5.68557 3.03629 5.6375 3.16828 5.6375C3.30027 5.6375 3.41433 5.68557 3.51048 5.78172L4.96526 7.24452Z" fill="white"/>
+                              <svg
+                                width="10"
+                                height="10"
+                                viewBox="0 0 12 12"
+                                fill="none"
+                              >
+                                <path
+                                  d="M4.96526 7.24452L8.49526 3.71453C8.5914 3.61839 8.70547 3.57031 8.83745 3.57031C8.96944 3.57031 9.08351 3.61839 9.17965 3.71453C9.2758 3.81068 9.32387 3.92474 9.32387 4.05673C9.32387 4.18872 9.2758 4.30278 9.17965 4.39893L5.30345 8.27514C5.2073 8.37128 5.09457 8.41935 4.96526 8.41935C4.83595 8.41935 4.72322 8.37128 4.62707 8.27514L2.81805 6.46612C2.72191 6.36997 2.67517 6.25591 2.67784 6.12392C2.68052 5.99193 2.72993 5.87786 2.82608 5.78172C2.92222 5.68557 3.03629 5.6375 3.16828 5.6375C3.30027 5.6375 3.41433 5.68557 3.51048 5.78172L4.96526 7.24452Z"
+                                  fill="white"
+                                />
                               </svg>
                             </div>
                             <div className="flex flex-col items-start gap-2 flex-1">
@@ -408,7 +442,8 @@ export default function Preview() {
                                 Allow Upload from Device
                               </h4>
                               <p className="text-[#505258] text-[13px] leading-5">
-                                Let users upload existing documents directly from their device.
+                                Let users upload existing documents directly
+                                from their device.
                               </p>
                             </div>
                           </div>
@@ -417,8 +452,16 @@ export default function Preview() {
                         {formData.uploadOptions?.allowCaptureViaWebcam && (
                           <div className="flex items-start gap-2 w-full">
                             <div className="flex w-[18px] h-[18px] items-center justify-center rounded-full bg-[#258750]">
-                              <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                                <path d="M4.96526 7.24452L8.49526 3.71453C8.5914 3.61839 8.70547 3.57031 8.83745 3.57031C8.96944 3.57031 9.08351 3.61839 9.17965 3.71453C9.2758 3.81068 9.32387 3.92474 9.32387 4.05673C9.32387 4.18872 9.2758 4.30278 9.17965 4.39893L5.30345 8.27514C5.2073 8.37128 5.09457 8.41935 4.96526 8.41935C4.83595 8.41935 4.72322 8.37128 4.62707 8.27514L2.81805 6.46612C2.72191 6.36997 2.67517 6.25591 2.67784 6.12392C2.68052 5.99193 2.72993 5.87786 2.82608 5.78172C2.92222 5.68557 3.03629 5.6375 3.16828 5.6375C3.30027 5.6375 3.41433 5.68557 3.51048 5.78172L4.96526 7.24452Z" fill="white"/>
+                              <svg
+                                width="10"
+                                height="10"
+                                viewBox="0 0 12 12"
+                                fill="none"
+                              >
+                                <path
+                                  d="M4.96526 7.24452L8.49526 3.71453C8.5914 3.61839 8.70547 3.57031 8.83745 3.57031C8.96944 3.57031 9.08351 3.61839 9.17965 3.71453C9.2758 3.81068 9.32387 3.92474 9.32387 4.05673C9.32387 4.18872 9.2758 4.30278 9.17965 4.39893L5.30345 8.27514C5.2073 8.37128 5.09457 8.41935 4.96526 8.41935C4.83595 8.41935 4.72322 8.37128 4.62707 8.27514L2.81805 6.46612C2.72191 6.36997 2.67517 6.25591 2.67784 6.12392C2.68052 5.99193 2.72993 5.87786 2.82608 5.78172C2.92222 5.68557 3.03629 5.6375 3.16828 5.6375C3.30027 5.6375 3.41433 5.68557 3.51048 5.78172L4.96526 7.24452Z"
+                                  fill="white"
+                                />
                               </svg>
                             </div>
                             <div className="flex flex-col items-start gap-2 flex-1">
@@ -426,17 +469,19 @@ export default function Preview() {
                                 Allow Capture via Webcam
                               </h4>
                               <p className="text-[#505258] text-[13px] leading-5">
-                                Enable webcam access to allow users to capture documents in real time.
+                                Enable webcam access to allow users to capture
+                                documents in real time.
                               </p>
                             </div>
                           </div>
                         )}
 
-                        {!formData.uploadOptions?.allowUploadFromDevice && !formData.uploadOptions?.allowCaptureViaWebcam && (
-                          <div className="text-[#676879] text-[13px] italic">
-                            No upload options selected
-                          </div>
-                        )}
+                        {!formData.uploadOptions?.allowUploadFromDevice &&
+                          !formData.uploadOptions?.allowCaptureViaWebcam && (
+                            <div className="text-[#676879] text-[13px] italic">
+                              No upload options selected
+                            </div>
+                          )}
                       </div>
                     </div>
 
@@ -447,15 +492,24 @@ export default function Preview() {
                           Unreadable Document Handling
                         </h3>
                         <p className="text-[#172B4D] text-[13px] leading-5">
-                          Choose what action the system should take if a submitted document is not clear or unreadable.
+                          Choose what action the system should take if a
+                          submitted document is not clear or unreadable.
                         </p>
                       </div>
-                      
+
                       <div className="flex px-6 py-5 flex-col items-start gap-5 w-full rounded bg-[#F6F7FB]">
                         <div className="flex items-start gap-2 w-full">
                           <div className="flex w-[18px] h-[18px] items-center justify-center rounded-full bg-[#258750]">
-                            <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                              <path d="M4.96526 7.24452L8.49526 3.71453C8.5914 3.61839 8.70547 3.57031 8.83745 3.57031C8.96944 3.57031 9.08351 3.61839 9.17965 3.71453C9.2758 3.81068 9.32387 3.92474 9.32387 4.05673C9.32387 4.18872 9.2758 4.30278 9.17965 4.39893L5.30345 8.27514C5.2073 8.37128 5.09457 8.41935 4.96526 8.41935C4.83595 8.41935 4.72322 8.37128 4.62707 8.27514L2.81805 6.46612C2.72191 6.36997 2.67517 6.25591 2.67784 6.12392C2.68052 5.99193 2.72993 5.87786 2.82608 5.78172C2.92222 5.68557 3.03629 5.6375 3.16828 5.6375C3.30027 5.6375 3.41433 5.68557 3.51048 5.78172L4.96526 7.24452Z" fill="white"/>
+                            <svg
+                              width="10"
+                              height="10"
+                              viewBox="0 0 12 12"
+                              fill="none"
+                            >
+                              <path
+                                d="M4.96526 7.24452L8.49526 3.71453C8.5914 3.61839 8.70547 3.57031 8.83745 3.57031C8.96944 3.57031 9.08351 3.61839 9.17965 3.71453C9.2758 3.81068 9.32387 3.92474 9.32387 4.05673C9.32387 4.18872 9.2758 4.30278 9.17965 4.39893L5.30345 8.27514C5.2073 8.37128 5.09457 8.41935 4.96526 8.41935C4.83595 8.41935 4.72322 8.37128 4.62707 8.27514L2.81805 6.46612C2.72191 6.36997 2.67517 6.25591 2.67784 6.12392C2.68052 5.99193 2.72993 5.87786 2.82608 5.78172C2.92222 5.68557 3.03629 5.6375 3.16828 5.6375C3.30027 5.6375 3.41433 5.68557 3.51048 5.78172L4.96526 7.24452Z"
+                                fill="white"
+                              />
                             </svg>
                           </div>
                           <div className="flex flex-col items-start gap-2 flex-1">
@@ -484,33 +538,55 @@ export default function Preview() {
                           Only document from these countries are supported.
                         </p>
                       </div>
-                      
+
                       <div className="flex px-6 py-6 flex-col items-start gap-2 w-full rounded bg-[#F6F7FB]">
                         <div className="flex flex-col items-start gap-2 w-full">
                           <label className="text-[#172B4D] text-[13px] font-medium leading-[18px]">
                             Which countries are supported?
                           </label>
                         </div>
-                        
+
                         {formData.countries && formData.countries.length > 0 ? (
                           formData.countries.map((country: any) => (
-                            <div key={country.id} className="flex px-3 py-3 flex-col items-start w-full rounded bg-white">
+                            <div
+                              key={country.id}
+                              className="flex px-3 py-3 flex-col items-start w-full rounded bg-white"
+                            >
                               <div className="flex h-[42px] items-center gap-6 w-full">
-                                <h4 className="text-black text-sm font-medium">{country.name}</h4>
+                                <h4 className="text-black text-sm font-medium">
+                                  {country.name}
+                                </h4>
                               </div>
 
                               <div className="flex px-3 py-3 items-start content-start gap-2 flex-wrap w-full rounded bg-white">
-                                {country.documentTypes?.filter((doc: any) => doc.selected).map((docType: any) => (
-                                  <div key={docType.id} className="flex h-8 px-2 justify-center items-center gap-2 rounded-full border border-[#C3C6D4] bg-[#FEFEFE]">
-                                    <div className="flex w-5 h-5 items-center justify-center rounded-full bg-[#258750]">
-                                      <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-                                        <path d="M4.85224 7.37932L8.77446 3.45712C8.88129 3.35029 9.00803 3.29688 9.15468 3.29688C9.30133 3.29688 9.42807 3.35029 9.5349 3.45712C9.64173 3.56395 9.69514 3.69069 9.69514 3.83734C9.69514 3.98399 9.64173 4.11073 9.5349 4.21756L5.228 8.52446C5.12118 8.63129 4.99592 8.6847 4.85224 8.6847C4.70856 8.6847 4.58331 8.63129 4.47648 8.52446L2.46646 6.51443C2.35963 6.40761 2.3077 6.28087 2.31067 6.13422C2.31364 5.98756 2.36855 5.86082 2.47537 5.75399C2.5822 5.64716 2.70894 5.59375 2.8556 5.59375C3.00225 5.59375 3.12899 5.64716 3.23582 5.75399L4.85224 7.37932Z" fill="white"/>
-                                      </svg>
+                                {country.documentTypes
+                                  ?.filter((doc: any) => doc.selected)
+                                  .map((docType: any) => (
+                                    <div
+                                      key={docType.id}
+                                      className="flex h-8 px-2 justify-center items-center gap-2 rounded-full border border-[#C3C6D4] bg-[#FEFEFE]"
+                                    >
+                                      <div className="flex w-5 h-5 items-center justify-center rounded-full bg-[#258750]">
+                                        <svg
+                                          width="11"
+                                          height="11"
+                                          viewBox="0 0 12 12"
+                                          fill="none"
+                                        >
+                                          <path
+                                            d="M4.85224 7.37932L8.77446 3.45712C8.88129 3.35029 9.00803 3.29688 9.15468 3.29688C9.30133 3.29688 9.42807 3.35029 9.5349 3.45712C9.64173 3.56395 9.69514 3.69069 9.69514 3.83734C9.69514 3.98399 9.64173 4.11073 9.5349 4.21756L5.228 8.52446C5.12118 8.63129 4.99592 8.6847 4.85224 8.6847C4.70856 8.6847 4.58331 8.63129 4.47648 8.52446L2.46646 6.51443C2.35963 6.40761 2.3077 6.28087 2.31067 6.13422C2.31364 5.98756 2.36855 5.86082 2.47537 5.75399C2.5822 5.64716 2.70894 5.59375 2.8556 5.59375C3.00225 5.59375 3.12899 5.64716 3.23582 5.75399L4.85224 7.37932Z"
+                                            fill="white"
+                                          />
+                                        </svg>
+                                      </div>
+                                      <span className="text-[#505258] text-[13px] font-medium">
+                                        {docType.name}
+                                      </span>
                                     </div>
-                                    <span className="text-[#505258] text-[13px] font-medium">{docType.name}</span>
-                                  </div>
-                                ))}
-                                {(!country.documentTypes?.some((doc: any) => doc.selected)) && (
+                                  ))}
+                                {!country.documentTypes?.some(
+                                  (doc: any) => doc.selected,
+                                ) && (
                                   <div className="text-[#676879] text-[13px] italic">
                                     No document types selected
                                   </div>
@@ -539,10 +615,12 @@ export default function Preview() {
                   </div>
                   <div className="flex px-3 items-center gap-2.5 w-full ml-7 pb-1">
                     <p className="flex-1 text-[#172B4D] text-[13px] font-normal leading-5">
-                      Take a live selfie to confirm you are the person in the ID document. Make sure you're in a well-lit area and your face is clearly visible.
+                      Take a live selfie to confirm you are the person in the ID
+                      document. Make sure you're in a well-lit area and your
+                      face is clearly visible.
                     </p>
                   </div>
-                  
+
                   <div className="flex px-4 py-4 flex-col items-start gap-6 w-full border-t border-[#DEDEDD] bg-white">
                     {/* Retry Attempts */}
                     <div className="flex flex-col items-start gap-4 w-full">
@@ -551,10 +629,11 @@ export default function Preview() {
                           Retry Attempts for Selfie Capture
                         </h3>
                         <p className="text-[#172B4D] text-[13px] leading-5">
-                          Define how many times a user can retry if the selfie capture fails.
+                          Define how many times a user can retry if the selfie
+                          capture fails.
                         </p>
                       </div>
-                      
+
                       <div className="flex px-6 py-5 flex-col items-start gap-2 w-full rounded bg-[#F6F7FB]">
                         <div className="flex items-center gap-2 w-full">
                           <label className="text-[#172B4D] text-[13px] font-medium leading-[18px] flex-1">
@@ -576,25 +655,36 @@ export default function Preview() {
                           Liveness Confidence Threshold (%)
                         </h3>
                         <p className="text-[#172B4D] text-[13px] leading-5">
-                          Choose what should happen if a user's liveness score does not meet the required threshold.
+                          Choose what should happen if a user's liveness score
+                          does not meet the required threshold.
                         </p>
                       </div>
-                      
+
                       <div className="flex px-6 py-5 flex-col items-start gap-5 w-full rounded bg-[#F6F7FB]">
                         <div className="flex items-start gap-2 w-full">
                           <div className="flex w-[18px] h-[18px] items-center justify-center rounded-full bg-[#258750]">
-                            <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                              <path d="M4.96526 7.24452L8.49526 3.71453C8.5914 3.61839 8.70547 3.57031 8.83745 3.57031C8.96944 3.57031 9.08351 3.61839 9.17965 3.71453C9.2758 3.81068 9.32387 3.92474 9.32387 4.05673C9.32387 4.18872 9.2758 4.30278 9.17965 4.39893L5.30345 8.27514C5.2073 8.37128 5.09457 8.41935 4.96526 8.41935C4.83595 8.41935 4.72322 8.37128 4.62707 8.27514L2.81805 6.46612C2.72191 6.36997 2.67517 6.25591 2.67784 6.12392C2.68052 5.99193 2.72993 5.87786 2.82608 5.78172C2.92222 5.68557 3.03629 5.6375 3.16828 5.6375C3.30027 5.6375 3.41433 5.68557 3.51048 5.78172L4.96526 7.24452Z" fill="white"/>
+                            <svg
+                              width="10"
+                              height="10"
+                              viewBox="0 0 12 12"
+                              fill="none"
+                            >
+                              <path
+                                d="M4.96526 7.24452L8.49526 3.71453C8.5914 3.61839 8.70547 3.57031 8.83745 3.57031C8.96944 3.57031 9.08351 3.61839 9.17965 3.71453C9.2758 3.81068 9.32387 3.92474 9.32387 4.05673C9.32387 4.18872 9.2758 4.30278 9.17965 4.39893L5.30345 8.27514C5.2073 8.37128 5.09457 8.41935 4.96526 8.41935C4.83595 8.41935 4.72322 8.37128 4.62707 8.27514L2.81805 6.46612C2.72191 6.36997 2.67517 6.25591 2.67784 6.12392C2.68052 5.99193 2.72993 5.87786 2.82608 5.78172C2.92222 5.68557 3.03629 5.6375 3.16828 5.6375C3.30027 5.6375 3.41433 5.68557 3.51048 5.78172L4.96526 7.24452Z"
+                                fill="white"
+                              />
                             </svg>
                           </div>
                           <div className="flex flex-col items-start gap-2 flex-1">
                             <h4 className="text-[#172B4D] text-[13px] font-medium leading-[18px]">
-                              {formData.biometricSettings?.livenessHandling === "retry"
+                              {formData.biometricSettings?.livenessHandling ===
+                              "retry"
                                 ? "Ask the user to try again"
                                 : "Block further attempts after allowed retries fail"}
                             </h4>
                             <p className="text-[#505258] text-[13px] leading-5">
-                              {formData.biometricSettings?.livenessHandling === "retry"
+                              {formData.biometricSettings?.livenessHandling ===
+                              "retry"
                                 ? "Prompt the user to reattempt the selfie."
                                 : "Send submission for manual verification."}
                             </p>
@@ -610,10 +700,11 @@ export default function Preview() {
                           Biometric Data Retention
                         </h3>
                         <p className="text-[#172B4D] text-[13px] leading-5">
-                          Choose whether to store biometric/selfie data and define retention duration.
+                          Choose whether to store biometric/selfie data and
+                          define retention duration.
                         </p>
                       </div>
-                      
+
                       <div className="flex px-6 py-5 flex-col items-start gap-2 w-full rounded bg-[#F6F7FB]">
                         {formData.biometricSettings?.dataStorage ? (
                           <div className="flex items-center gap-2 w-full">
@@ -622,7 +713,9 @@ export default function Preview() {
                             </label>
                             <div className="flex h-8 px-3 w-80 items-center rounded border border-[#C3C6D4]">
                               <span className="text-[#676879] text-[13px]">
-                                {formData.biometricSettings?.retentionPeriod || "6"} Months
+                                {formData.biometricSettings?.retentionPeriod ||
+                                  "6"}{" "}
+                                Months
                               </span>
                             </div>
                           </div>

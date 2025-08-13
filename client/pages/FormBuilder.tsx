@@ -33,10 +33,13 @@ export default function FormBuilder() {
 
   const handleNext = () => {
     // Save form data to localStorage
-    localStorage.setItem('formBuilderData', JSON.stringify({
-      systemFields,
-      customFields
-    }));
+    localStorage.setItem(
+      "formBuilderData",
+      JSON.stringify({
+        systemFields,
+        customFields,
+      }),
+    );
     navigate("/document-verification");
   };
 
