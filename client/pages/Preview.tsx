@@ -95,6 +95,37 @@ export default function Preview() {
     navigate("/");
   };
 
+  const handleSaveAndSendInvite = () => {
+    setShowSendInviteModal(true);
+  };
+
+  const handleInviteSuccess = () => {
+    // Also save the template when invite is sent
+    const templateData = {
+      id: Date.now(),
+      name: "New Template", // You could also integrate with naming modal here
+      ...formData,
+      createdDate: new Date().toLocaleDateString("en-GB"),
+      createdBy: "Current User",
+      status: "Completed" as const,
+      lastUpdated: new Date().toLocaleDateString("en-GB"),
+      invitees: [
+        { initials: "CU", color: "avatar-1" },
+        { initials: "+0", color: "grey-bg" },
+      ],
+    };
+
+    // Save to localStorage
+    const existingTemplates = JSON.parse(
+      localStorage.getItem("savedTemplates") || "[]",
+    );
+    existingTemplates.unshift(templateData);
+    localStorage.setItem("savedTemplates", JSON.stringify(existingTemplates));
+
+    // Navigate to home page
+    navigate("/");
+  };
+
   return (
     <div className="flex flex-col items-start bg-white h-screen">
       {/* Header */}
