@@ -972,6 +972,12 @@ export default function DocumentVerification() {
   };
 
   const handleNext = () => {
+    // Save document verification data to localStorage
+    localStorage.setItem('documentVerificationData', JSON.stringify({
+      uploadOptions,
+      documentHandling,
+      countries
+    }));
     navigate("/biometric-verification");
   };
 
