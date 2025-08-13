@@ -525,7 +525,9 @@ export default function Preview() {
                             Set the maximum number of retries
                           </label>
                           <div className="flex h-8 px-3 w-80 items-center rounded border border-[#C3C6D4] bg-[#F6F7FB]">
-                            <span className="text-[#676879] text-[13px]">4</span>
+                            <span className="text-[#676879] text-[13px]">
+                              {formData.biometricSettings?.maxRetries || "4"}
+                            </span>
                           </div>
                         </div>
                       </div>
