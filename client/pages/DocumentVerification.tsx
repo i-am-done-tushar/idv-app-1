@@ -41,21 +41,156 @@ export default function DocumentVerification() {
 
   const [availableCountries] = useState<Omit<Country, 'selected'>[]>([
     {
-      id: 'usa',
-      name: 'United States',
+      id: 'afghanistan',
+      name: 'Afghanistan',
       documentTypes: [
-        { id: 'drivers_license', name: "Driver's License", selected: false },
         { id: 'passport', name: 'Passport', selected: false },
-        { id: 'state_id', name: 'State ID', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
       ]
     },
     {
-      id: 'uk',
-      name: 'United Kingdom',
+      id: 'albania',
+      name: 'Albania',
       documentTypes: [
         { id: 'passport', name: 'Passport', selected: false },
-        { id: 'driving_licence', name: 'Driving Licence', selected: false },
         { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'algeria',
+      name: 'Algeria',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'argentina',
+      name: 'Argentina',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'dni', name: 'DNI (National Identity Document)', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'armenia',
+      name: 'Armenia',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'australia',
+      name: 'Australia',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'drivers_licence', name: "Driver's Licence", selected: false },
+        { id: 'proof_of_age', name: 'Proof of Age Card', selected: false },
+      ]
+    },
+    {
+      id: 'austria',
+      name: 'Austria',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'azerbaijan',
+      name: 'Azerbaijan',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'bahrain',
+      name: 'Bahrain',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'bangladesh',
+      name: 'Bangladesh',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'belarus',
+      name: 'Belarus',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'belgium',
+      name: 'Belgium',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'bolivia',
+      name: 'Bolivia',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'bosnia',
+      name: 'Bosnia and Herzegovina',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'brazil',
+      name: 'Brazil',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'cpf', name: 'CPF (Individual Taxpayer Registry)', selected: false },
+        { id: 'rg', name: 'RG (General Registry)', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'bulgaria',
+      name: 'Bulgaria',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'cambodia',
+      name: 'Cambodia',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
       ]
     },
     {
@@ -68,12 +203,651 @@ export default function DocumentVerification() {
       ]
     },
     {
-      id: 'australia',
-      name: 'Australia',
+      id: 'chile',
+      name: 'Chile',
       documentTypes: [
         { id: 'passport', name: 'Passport', selected: false },
-        { id: 'drivers_licence', name: "Driver's Licence", selected: false },
-        { id: 'proof_of_age', name: 'Proof of Age Card', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'china',
+      name: 'China',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'colombia',
+      name: 'Colombia',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'cedula', name: 'Cédula de Ciudadanía', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'croatia',
+      name: 'Croatia',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'cyprus',
+      name: 'Cyprus',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'czech_republic',
+      name: 'Czech Republic',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'denmark',
+      name: 'Denmark',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'ecuador',
+      name: 'Ecuador',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'egypt',
+      name: 'Egypt',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'estonia',
+      name: 'Estonia',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'finland',
+      name: 'Finland',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'france',
+      name: 'France',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'georgia',
+      name: 'Georgia',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'germany',
+      name: 'Germany',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'ghana',
+      name: 'Ghana',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'greece',
+      name: 'Greece',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'guatemala',
+      name: 'Guatemala',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'dpi', name: 'DPI (Personal Identification Document)', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'hong_kong',
+      name: 'Hong Kong',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'hkid', name: 'Hong Kong Identity Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'hungary',
+      name: 'Hungary',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'iceland',
+      name: 'Iceland',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'indonesia',
+      name: 'Indonesia',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'ktp', name: 'KTP (Identity Card)', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'iran',
+      name: 'Iran',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'iraq',
+      name: 'Iraq',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'ireland',
+      name: 'Ireland',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'israel',
+      name: 'Israel',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'italy',
+      name: 'Italy',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'japan',
+      name: 'Japan',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+        { id: 'residence_card', name: 'Residence Card', selected: false },
+      ]
+    },
+    {
+      id: 'jordan',
+      name: 'Jordan',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'kazakhstan',
+      name: 'Kazakhstan',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'kenya',
+      name: 'Kenya',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'kuwait',
+      name: 'Kuwait',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'latvia',
+      name: 'Latvia',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'lebanon',
+      name: 'Lebanon',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'lithuania',
+      name: 'Lithuania',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'luxembourg',
+      name: 'Luxembourg',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'malaysia',
+      name: 'Malaysia',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'mykad', name: 'MyKad (Identity Card)', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'malta',
+      name: 'Malta',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'mexico',
+      name: 'Mexico',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'ine', name: 'INE (National Electoral Institute)', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'morocco',
+      name: 'Morocco',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'netherlands',
+      name: 'Netherlands',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'new_zealand',
+      name: 'New Zealand',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+        { id: 'kiwi_access', name: 'Kiwi Access Card', selected: false },
+      ]
+    },
+    {
+      id: 'nigeria',
+      name: 'Nigeria',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'nin', name: 'NIN (National Identification Number)', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'norway',
+      name: 'Norway',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'pakistan',
+      name: 'Pakistan',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'cnic', name: 'CNIC (Computerized National Identity Card)', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'peru',
+      name: 'Peru',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'dni', name: 'DNI (National Identity Document)', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'philippines',
+      name: 'Philippines',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'poland',
+      name: 'Poland',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'portugal',
+      name: 'Portugal',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'citizen_card', name: 'Citizen Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'qatar',
+      name: 'Qatar',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'romania',
+      name: 'Romania',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'russia',
+      name: 'Russia',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'saudi_arabia',
+      name: 'Saudi Arabia',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'serbia',
+      name: 'Serbia',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'singapore',
+      name: 'Singapore',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'nric', name: 'NRIC (National Registration Identity Card)', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'slovakia',
+      name: 'Slovakia',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'slovenia',
+      name: 'Slovenia',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'south_africa',
+      name: 'South Africa',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'south_korea',
+      name: 'South Korea',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'spain',
+      name: 'Spain',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'dni', name: 'DNI (National Identity Document)', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'sri_lanka',
+      name: 'Sri Lanka',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'sweden',
+      name: 'Sweden',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'switzerland',
+      name: 'Switzerland',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'taiwan',
+      name: 'Taiwan',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'thailand',
+      name: 'Thailand',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'turkey',
+      name: 'Turkey',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'uae',
+      name: 'United Arab Emirates',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'emirates_id', name: 'Emirates ID', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'ukraine',
+      name: 'Ukraine',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'uk',
+      name: 'United Kingdom',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'driving_licence', name: 'Driving Licence', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+      ]
+    },
+    {
+      id: 'usa',
+      name: 'United States',
+      documentTypes: [
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'state_id', name: 'State ID', selected: false },
+      ]
+    },
+    {
+      id: 'uruguay',
+      name: 'Uruguay',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'cedula', name: 'Cédula de Identidad', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'venezuela',
+      name: 'Venezuela',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'cedula', name: 'Cédula de Identidad', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+      ]
+    },
+    {
+      id: 'vietnam',
+      name: 'Vietnam',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
       ]
     }
   ]);
