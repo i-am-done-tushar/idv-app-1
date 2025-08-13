@@ -162,7 +162,10 @@ export default function Preview() {
                     Save & Send Invite
                   </span>
                 </button>
-                <button className="flex h-8 px-2 py-[9px] justify-center items-center gap-1 rounded border border-[#0073EA] bg-[#0073EA] hover:bg-[#005BB5] transition-colors">
+                <button
+                  onClick={handleSave}
+                  className="flex h-8 px-2 py-[9px] justify-center items-center gap-1 rounded border border-[#0073EA] bg-[#0073EA] hover:bg-[#005BB5] transition-colors"
+                >
                   <Save size={16} className="text-white" />
                   <span className="text-white text-[13px] font-medium">
                     Save
