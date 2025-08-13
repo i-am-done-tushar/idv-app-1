@@ -640,6 +640,14 @@ export default function Preview() {
           </div>
         </div>
       </div>
+
+      {/* Success Modal */}
+      <SuccessModal
+        isOpen={showSuccessModal}
+        onClose={handleCloseSuccessModal}
+        title='"New Template" has been saved successfully.'
+        message="Now invite users using this saved template."
+      />
     </div>
   );
 }
