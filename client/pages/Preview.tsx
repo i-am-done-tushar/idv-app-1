@@ -456,49 +456,39 @@ export default function Preview() {
                           </label>
                         </div>
                         
-                        <div className="flex px-3 py-3 flex-col items-start w-full rounded bg-white">
-                          <div className="flex h-[42px] items-center gap-6 w-full">
-                            <h4 className="text-black text-sm font-medium">India</h4>
-                          </div>
-                          
-                          <div className="flex px-3 py-3 items-start content-start gap-2 flex-wrap w-full rounded bg-white">
-                            <div className="flex h-8 px-2 justify-center items-center gap-2 rounded-full border border-[#C3C6D4] bg-[#FEFEFE]">
-                              <div className="flex w-5 h-5 items-center justify-center rounded-full bg-[#258750]">
-                                <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-                                  <path d="M4.85224 7.37932L8.77446 3.45712C8.88129 3.35029 9.00803 3.29688 9.15468 3.29688C9.30133 3.29688 9.42807 3.35029 9.5349 3.45712C9.64173 3.56395 9.69514 3.69069 9.69514 3.83734C9.69514 3.98399 9.64173 4.11073 9.5349 4.21756L5.228 8.52446C5.12118 8.63129 4.99592 8.6847 4.85224 8.6847C4.70856 8.6847 4.58331 8.63129 4.47648 8.52446L2.46646 6.51443C2.35963 6.40761 2.3077 6.28087 2.31067 6.13422C2.31364 5.98756 2.36855 5.86082 2.47537 5.75399C2.5822 5.64716 2.70894 5.59375 2.8556 5.59375C3.00225 5.59375 3.12899 5.64716 3.23582 5.75399L4.85224 7.37932Z" fill="white"/>
-                                </svg>
+                        {formData.countries && formData.countries.length > 0 ? (
+                          formData.countries.map((country: any) => (
+                            <div key={country.id} className="flex px-3 py-3 flex-col items-start w-full rounded bg-white">
+                              <div className="flex h-[42px] items-center gap-6 w-full">
+                                <h4 className="text-black text-sm font-medium">{country.name}</h4>
                               </div>
-                              <span className="text-[#505258] text-[13px] font-medium">Aadhar Card</span>
+
+                              <div className="flex px-3 py-3 items-start content-start gap-2 flex-wrap w-full rounded bg-white">
+                                {country.documentTypes?.filter((doc: any) => doc.selected).map((docType: any) => (
+                                  <div key={docType.id} className="flex h-8 px-2 justify-center items-center gap-2 rounded-full border border-[#C3C6D4] bg-[#FEFEFE]">
+                                    <div className="flex w-5 h-5 items-center justify-center rounded-full bg-[#258750]">
+                                      <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+                                        <path d="M4.85224 7.37932L8.77446 3.45712C8.88129 3.35029 9.00803 3.29688 9.15468 3.29688C9.30133 3.29688 9.42807 3.35029 9.5349 3.45712C9.64173 3.56395 9.69514 3.69069 9.69514 3.83734C9.69514 3.98399 9.64173 4.11073 9.5349 4.21756L5.228 8.52446C5.12118 8.63129 4.99592 8.6847 4.85224 8.6847C4.70856 8.6847 4.58331 8.63129 4.47648 8.52446L2.46646 6.51443C2.35963 6.40761 2.3077 6.28087 2.31067 6.13422C2.31364 5.98756 2.36855 5.86082 2.47537 5.75399C2.5822 5.64716 2.70894 5.59375 2.8556 5.59375C3.00225 5.59375 3.12899 5.64716 3.23582 5.75399L4.85224 7.37932Z" fill="white"/>
+                                      </svg>
+                                    </div>
+                                    <span className="text-[#505258] text-[13px] font-medium">{docType.name}</span>
+                                  </div>
+                                ))}
+                                {(!country.documentTypes?.some((doc: any) => doc.selected)) && (
+                                  <div className="text-[#676879] text-[13px] italic">
+                                    No document types selected
+                                  </div>
+                                )}
+                              </div>
                             </div>
-                            
-                            <div className="flex h-8 px-2 justify-center items-center gap-2 rounded-full border border-[#C3C6D4] bg-[#FEFEFE]">
-                              <div className="flex w-5 h-5 items-center justify-center rounded-full bg-[#258750]">
-                                <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-                                  <path d="M4.85224 7.37932L8.77446 3.45712C8.88129 3.35029 9.00803 3.29688 9.15468 3.29688C9.30133 3.29688 9.42807 3.35029 9.5349 3.45712C9.64173 3.56395 9.69514 3.69069 9.69514 3.83734C9.69514 3.98399 9.64173 4.11073 9.5349 4.21756L5.228 8.52446C5.12118 8.63129 4.99592 8.6847 4.85224 8.6847C4.70856 8.6847 4.58331 8.63129 4.47648 8.52446L2.46646 6.51443C2.35963 6.40761 2.3077 6.28087 2.31067 6.13422C2.31364 5.98756 2.36855 5.86082 2.47537 5.75399C2.5822 5.64716 2.70894 5.59375 2.8556 5.59375C3.00225 5.59375 3.12899 5.64716 3.23582 5.75399L4.85224 7.37932Z" fill="white"/>
-                                </svg>
-                              </div>
-                              <span className="text-[#505258] text-[13px] font-medium">Driving License</span>
-                            </div>
-                            
-                            <div className="flex h-8 px-2 justify-center items-center gap-2 rounded-full border border-[#C3C6D4] bg-[#FEFEFE]">
-                              <div className="flex w-5 h-5 items-center justify-center rounded-full bg-[#258750]">
-                                <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-                                  <path d="M4.85224 7.37932L8.77446 3.45712C8.88129 3.35029 9.00803 3.29688 9.15468 3.29688C9.30133 3.29688 9.42807 3.35029 9.5349 3.45712C9.64173 3.56395 9.69514 3.69069 9.69514 3.83734C9.69514 3.98399 9.64173 4.11073 9.5349 4.21756L5.228 8.52446C5.12118 8.63129 4.99592 8.6847 4.85224 8.6847C4.70856 8.6847 4.58331 8.63129 4.47648 8.52446L2.46646 6.51443C2.35963 6.40761 2.3077 6.28087 2.31067 6.13422C2.31364 5.98756 2.36855 5.86082 2.47537 5.75399C2.5822 5.64716 2.70894 5.59375 2.8556 5.59375C3.00225 5.59375 3.12899 5.64716 3.23582 5.75399L4.85224 7.37932Z" fill="white"/>
-                                </svg>
-                              </div>
-                              <span className="text-[#505258] text-[13px] font-medium">Pan Card</span>
-                            </div>
-                            
-                            <div className="flex h-8 px-2 justify-center items-center gap-2 rounded-full border border-[#C3C6D4] bg-[#FEFEFE]">
-                              <div className="flex w-5 h-5 items-center justify-center rounded-full bg-[#258750]">
-                                <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-                                  <path d="M4.85224 7.37932L8.77446 3.45712C8.88129 3.35029 9.00803 3.29688 9.15468 3.29688C9.30133 3.29688 9.42807 3.35029 9.5349 3.45712C9.64173 3.56395 9.69514 3.69069 9.69514 3.83734C9.69514 3.98399 9.64173 4.11073 9.5349 4.21756L5.228 8.52446C5.12118 8.63129 4.99592 8.6847 4.85224 8.6847C4.70856 8.6847 4.58331 8.63129 4.47648 8.52446L2.46646 6.51443C2.35963 6.40761 2.3077 6.28087 2.31067 6.13422C2.31364 5.98756 2.36855 5.86082 2.47537 5.75399C2.5822 5.64716 2.70894 5.59375 2.8556 5.59375C3.00225 5.59375 3.12899 5.64716 3.23582 5.75399L4.85224 7.37932Z" fill="white"/>
-                                </svg>
-                              </div>
-                              <span className="text-[#505258] text-[13px] font-medium">Passport</span>
+                          ))
+                        ) : (
+                          <div className="flex px-3 py-3 w-full rounded bg-white">
+                            <div className="text-[#676879] text-[13px] italic">
+                              No countries selected
                             </div>
                           </div>
-                        </div>
+                        )}
                       </div>
                     </div>
                   </div>
