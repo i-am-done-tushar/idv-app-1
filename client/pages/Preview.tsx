@@ -10,6 +10,7 @@ export default function Preview() {
   const [currentView, setCurrentView] = useState<"admin" | "receiver">("admin");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showNameTemplateModal, setShowNameTemplateModal] = useState(false);
+  const [showSendInviteModal, setShowSendInviteModal] = useState(false);
 
   // User configuration data
   const [formData, setFormData] = useState({
