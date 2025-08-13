@@ -241,7 +241,7 @@ export function TemplatesTable() {
           <div className="flex items-center h-[38px] px-2 bg-table-header-bg">
             <span className="text-sm font-medium text-primary-text">Name</span>
           </div>
-          {templates.map((template, index) => (
+          {allTemplates.map((template, index) => (
             <div key={template.id} className="flex items-center h-[38px] px-2 pr-6 border-t border-border-color bg-white">
               <span className="text-sm font-normal leading-5 text-secondary-text">
                 {template.name}
