@@ -746,8 +746,15 @@ export default function Preview() {
       <SuccessModal
         isOpen={showSuccessModal}
         onClose={handleCloseSuccessModal}
-        title='"New Template" has been saved successfully.'
+        title='Template has been saved successfully.'
         message="Now invite users using this saved template."
+      />
+
+      {/* Name Template Modal */}
+      <NameTemplateModal
+        isOpen={showNameTemplateModal}
+        onClose={() => setShowNameTemplateModal(false)}
+        onSave={handleSaveWithName}
       />
     </div>
   );
