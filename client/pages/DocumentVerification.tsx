@@ -1583,6 +1583,19 @@ export default function DocumentVerification() {
                   </div>
                 </div>
               </div>
+
+              {/* Continue Button */}
+              <div className="flex w-full justify-end px-4 py-6 border-t border-[#DEDEDD] bg-white mt-auto">
+                <button
+                  onClick={handleNext}
+                  className="flex h-10 px-6 py-3 justify-center items-center gap-2 rounded bg-[#0073EA] hover:bg-[#005BB5] transition-colors"
+                >
+                  <span className="text-white text-sm font-medium">
+                    Continue
+                  </span>
+                  <ChevronRight size={16} className="text-white" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
