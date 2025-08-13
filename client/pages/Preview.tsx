@@ -48,6 +48,37 @@ export default function Preview() {
     navigate("/biometric-verification");
   };
 
+  const handleSave = () => {
+    // Save the template to localStorage with a unique ID
+    const templateData = {
+      id: Date.now(),
+      name: "New Template",
+      ...formData,
+      createdDate: new Date().toLocaleDateString('en-GB'),
+      createdBy: "Current User",
+      status: "Completed" as const,
+      lastUpdated: new Date().toLocaleDateString('en-GB'),
+      invitees: [
+        { initials: "CU", color: "avatar-1" },
+        { initials: "+0", color: "grey-bg" }
+      ]
+    };
+
+    // Save to localStorage
+    const existingTemplates = JSON.parse(localStorage.getItem('savedTemplates') || '[]');
+    existingTemplates.unshift(templateData);
+    localStorage.setItem('savedTemplates', JSON.stringify(existingTemplates));
+
+    // Show success modal
+    setShowSuccessModal(true);
+  };
+
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal(false);
+    // Navigate to dashboard after closing modal
+    navigate("/");
+  };
+
   return (
     <div className="flex flex-col items-start bg-white h-screen">
       {/* Header */}
