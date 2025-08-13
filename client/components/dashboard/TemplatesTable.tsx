@@ -258,7 +258,7 @@ export function TemplatesTable() {
               <div className="flex items-center h-[38px] px-2 bg-table-header-bg">
                 <span className="text-sm font-medium text-primary-text">Invitees</span>
               </div>
-              {templates.map((template) => (
+              {allTemplates.map((template) => (
                 <div key={template.id} className="flex items-center h-[38px] px-2 pr-6 border-t border-border-color bg-white">
                   <AvatarGroup
                     invitees={template.invitees}
@@ -268,13 +268,13 @@ export function TemplatesTable() {
                 </div>
               ))}
             </div>
-            
+
             {/* Created Date Column */}
             <div className="flex-1 flex flex-col">
               <div className="flex items-center h-[38px] px-2 bg-table-header-bg">
                 <span className="text-sm font-medium text-primary-text">Created Date</span>
               </div>
-              {templates.map((template) => (
+              {allTemplates.map((template) => (
                 <div key={template.id} className="flex items-center h-[38px] px-2 pr-6 border-t border-border-color bg-white">
                   <span className="text-sm font-normal leading-5 text-secondary-text">
                     {template.createdDate}
@@ -282,13 +282,13 @@ export function TemplatesTable() {
                 </div>
               ))}
             </div>
-            
+
             {/* Created By Column */}
             <div className="flex-1 flex flex-col">
               <div className="flex items-center h-[38px] px-2 bg-table-header-bg">
                 <span className="text-sm font-medium text-primary-text">Created By</span>
               </div>
-              {templates.map((template) => (
+              {allTemplates.map((template) => (
                 <div key={template.id} className="flex items-center h-[38px] px-2 pr-6 border-t border-border-color bg-white">
                   <span className="text-sm font-normal leading-5 text-secondary-text">
                     {template.createdBy}
@@ -296,25 +296,25 @@ export function TemplatesTable() {
                 </div>
               ))}
             </div>
-            
+
             {/* Status Column */}
             <div className="w-[215px] flex flex-col">
               <div className="flex items-center h-[38px] px-2 bg-table-header-bg">
                 <span className="text-sm font-medium text-primary-text">Status</span>
               </div>
-              {templates.map((template) => (
+              {allTemplates.map((template) => (
                 <div key={template.id} className="flex items-center h-[38px] px-2 pr-6 border-t border-border-color bg-white">
                   <StatusBadge status={template.status} />
                 </div>
               ))}
             </div>
-            
+
             {/* Last Updated Column */}
             <div className="flex-1 flex flex-col">
               <div className="flex items-center h-[38px] px-2 bg-table-header-bg">
                 <span className="text-sm font-medium text-primary-text">Last Updated</span>
               </div>
-              {templates.map((template) => (
+              {allTemplates.map((template) => (
                 <div key={template.id} className="flex items-center h-[38px] px-2 pr-6 border-t border-border-color bg-white">
                   <span className="text-sm font-normal leading-5 text-secondary-text">
                     {template.lastUpdated}
