@@ -1211,7 +1211,10 @@ export default function DocumentVerification() {
                       </p>
                     </div>
                   </div>
-                  <div className="flex w-[308px] px-7 py-3 items-center gap-2 rounded bg-[#F6F7FB]">
+                  <button
+                    onClick={() => navigate("/form-builder")}
+                    className="flex w-[308px] px-7 py-3 items-center gap-2 rounded bg-[#F6F7FB] hover:bg-[#E6F1FD] transition-colors cursor-pointer"
+                  >
                     <div className="flex flex-col items-start gap-2 flex-1">
                       <div className="flex items-center gap-1 w-full">
                         <h4 className="flex-1 text-[#292F4C] text-sm font-bold leading-[13px]">
@@ -1225,7 +1228,7 @@ export default function DocumentVerification() {
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </button>
                   <div className="flex w-[308px] px-7 py-3 items-center gap-2 rounded bg-[#CCE5FF] border border-[#DEDEDD]">
                     <div className="flex flex-col items-start gap-2 flex-1">
                       <div className="flex items-center gap-1 w-full">
