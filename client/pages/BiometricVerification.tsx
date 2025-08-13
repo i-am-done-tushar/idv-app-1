@@ -28,6 +28,10 @@ export default function BiometricVerification() {
   };
 
   const handleNext = () => {
+    // Save biometric verification data to localStorage
+    localStorage.setItem('biometricVerificationData', JSON.stringify({
+      biometricSettings
+    }));
     navigate("/preview");
   };
 
