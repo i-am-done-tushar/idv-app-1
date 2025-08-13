@@ -55,10 +55,15 @@ export default function Preview() {
   };
 
   const handleSave = () => {
-    // Save the template to localStorage with a unique ID
+    // Show the naming modal instead of saving directly
+    setShowNameTemplateModal(true);
+  };
+
+  const handleSaveWithName = (templateName: string) => {
+    // Save the template to localStorage with the provided name
     const templateData = {
       id: Date.now(),
-      name: "New Template",
+      name: templateName,
       ...formData,
       createdDate: new Date().toLocaleDateString("en-GB"),
       createdBy: "Current User",
@@ -77,7 +82,8 @@ export default function Preview() {
     existingTemplates.unshift(templateData);
     localStorage.setItem("savedTemplates", JSON.stringify(existingTemplates));
 
-    // Show success modal
+    // Close naming modal and show success modal
+    setShowNameTemplateModal(false);
     setShowSuccessModal(true);
   };
 
