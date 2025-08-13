@@ -36,6 +36,10 @@ const App = () => (
             path="/biometric-verification"
             element={<BiometricVerification />}
           />
+          <Route
+            path="/preview"
+            element={<Preview />}
+          />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
