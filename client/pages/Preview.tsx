@@ -755,6 +755,7 @@ export default function Preview() {
         isOpen={showNameTemplateModal}
         onClose={() => setShowNameTemplateModal(false)}
         onSave={handleSaveWithName}
+        shouldNavigate={false}
       />
     </div>
   );
