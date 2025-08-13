@@ -328,7 +328,7 @@ export function TemplatesTable() {
         {/* Fixed More Actions Column */}
         <div className="w-[52px] flex flex-col">
           <div className="h-[38px] bg-table-header-bg"></div>
-          {templates.map((template) => (
+          {allTemplates.map((template) => (
             <div key={template.id} className="flex items-center justify-center h-[38px] border-t border-border-color bg-white">
               <button
                 className="flex items-center justify-center w-7 h-7 rounded-full bg-white hover:bg-gray-50 transition-colors"
