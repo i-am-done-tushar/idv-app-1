@@ -895,6 +895,69 @@ export default function DocumentVerification() {
         { id: "drivers_license", name: "Driver's License", selected: false },
       ],
     },
+    {
+      id: "nepal",
+      name: "Nepal",
+      documentTypes: [
+        { id: "passport", name: "Passport", selected: false },
+        { id: "citizenship", name: "Citizenship Certificate", selected: false },
+        { id: "drivers_license", name: "Driver's License", selected: false },
+      ],
+    },
+    {
+      id: "myanmar",
+      name: "Myanmar",
+      documentTypes: [
+        { id: "passport", name: "Passport", selected: false },
+        { id: "national_id", name: "National ID Card", selected: false },
+        { id: "drivers_license", name: "Driver's License", selected: false },
+      ],
+    },
+    {
+      id: "cambodia_updated",
+      name: "Cambodia",
+      documentTypes: [
+        { id: "passport", name: "Passport", selected: false },
+        { id: "national_id", name: "National ID Card", selected: false },
+        { id: "drivers_license", name: "Driver's License", selected: false },
+      ],
+    },
+    {
+      id: "laos",
+      name: "Laos",
+      documentTypes: [
+        { id: "passport", name: "Passport", selected: false },
+        { id: "national_id", name: "National ID Card", selected: false },
+        { id: "drivers_license", name: "Driver's License", selected: false },
+      ],
+    },
+    {
+      id: "maldives",
+      name: "Maldives",
+      documentTypes: [
+        { id: "passport", name: "Passport", selected: false },
+        { id: "national_id", name: "National ID Card", selected: false },
+        { id: "drivers_license", name: "Driver's License", selected: false },
+      ],
+    },
+    {
+      id: "bhutan",
+      name: "Bhutan",
+      documentTypes: [
+        { id: "passport", name: "Passport", selected: false },
+        { id: "citizenship_id", name: "Citizenship ID Card", selected: false },
+        { id: "drivers_license", name: "Driver's License", selected: false },
+      ],
+    },
+    {
+      id: "mongolia",
+      name: "Mongolia",
+      documentTypes: [
+        { id: "passport", name: "Passport", selected: false },
+        { id: "national_id", name: "National ID Card", selected: false },
+        { id: "drivers_license", name: "Driver's License", selected: false },
+      ],
+    },
   ]);
 
   const [countryDropdownOpen, setCountryDropdownOpen] = useState(false);
