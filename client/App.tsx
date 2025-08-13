@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import ChooseTemplate from "./pages/ChooseTemplate";
 import FormBuilder from "./pages/FormBuilder";
+import DocumentVerification from "./pages/DocumentVerification";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/home" element={<Index />} />
           <Route path="/choose-template" element={<ChooseTemplate />} />
           <Route path="/form-builder" element={<FormBuilder />} />
+          <Route path="/document-verification" element={<DocumentVerification />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
