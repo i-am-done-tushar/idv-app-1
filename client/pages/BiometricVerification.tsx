@@ -28,7 +28,7 @@ export default function BiometricVerification() {
   };
 
   const handleNext = () => {
-    console.log("Navigate to next step");
+    navigate("/preview");
   };
 
   return (
