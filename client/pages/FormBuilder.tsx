@@ -448,6 +448,8 @@ export default function FormBuilder() {
                               onChange={(e) =>
                                 handleSystemFieldChange("email", e.target.value)
                               }
+                              onFocus={() => setShowSystemFieldWarning(true)}
+                              onBlur={() => setShowSystemFieldWarning(false)}
                               placeholder="Eg: jhonwick@email.com"
                               className="w-full h-10 px-3 text-[#323238] text-[13px] border border-[#D0D4E4] rounded focus:outline-none focus:ring-2 focus:ring-[#0073EA] focus:border-transparent placeholder:text-[#676879]"
                             />
