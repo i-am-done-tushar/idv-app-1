@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MoreHorizontal } from 'lucide-react';
 import { InviteesModal } from './InviteesModal';
 import { TemplateActionsMenu } from './TemplateActionsMenu';
