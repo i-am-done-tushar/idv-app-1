@@ -793,6 +793,13 @@ export default function Preview() {
         onSave={handleSaveWithName}
         shouldNavigate={false}
       />
+
+      {/* Send Invite Modal */}
+      <SendInviteModal
+        isOpen={showSendInviteModal}
+        onClose={() => setShowSendInviteModal(false)}
+        onSuccess={handleInviteSuccess}
+      />
     </div>
   );
 }
