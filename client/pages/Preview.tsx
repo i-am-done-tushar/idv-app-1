@@ -12,6 +12,32 @@ export default function Preview() {
   const navigate = useNavigate();
   const [currentView, setCurrentView] = useState<"admin" | "receiver">("admin");
 
+  // User configuration data
+  const [formData, setFormData] = useState({
+    systemFields: { firstName: "", lastName: "", email: "" },
+    customFields: [],
+    uploadOptions: { allowUploadFromDevice: false, allowCaptureViaWebcam: false },
+    documentHandling: "reject" as "reject" | "retry",
+    countries: [],
+    biometricSettings: { maxRetries: "4", livenessHandling: "retry" as "retry" | "block", dataStorage: true, retentionPeriod: "6" }
+  });
+
+  useEffect(() => {
+    // Load user data from localStorage if available
+    const savedFormData = localStorage.getItem('formBuilderData');
+    const savedDocumentData = localStorage.getItem('documentVerificationData');
+    const savedBiometricData = localStorage.getItem('biometricVerificationData');
+
+    if (savedFormData || savedDocumentData || savedBiometricData) {
+      setFormData(prev => ({
+        ...prev,
+        ...(savedFormData ? JSON.parse(savedFormData) : {}),
+        ...(savedDocumentData ? JSON.parse(savedDocumentData) : {}),
+        ...(savedBiometricData ? JSON.parse(savedBiometricData) : {})
+      }));
+    }
+  }, []);
+
   const handleBack = () => {
     navigate(-1);
   };
