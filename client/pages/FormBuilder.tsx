@@ -21,6 +21,7 @@ export default function FormBuilder() {
   >([]);
   const [fieldTypeSelectorOpen, setFieldTypeSelectorOpen] = useState(false);
   const [selectedFieldId, setSelectedFieldId] = useState<number | null>(null);
+  const [showSystemFieldWarning, setShowSystemFieldWarning] = useState(false);
 
   const handleBack = () => {
     navigate(-1);
@@ -31,8 +32,7 @@ export default function FormBuilder() {
   };
 
   const handleNext = () => {
-    console.log("Navigate to preview");
-    // Navigate to preview step
+    navigate("/document-verification");
   };
 
   const handleSystemFieldChange = (
@@ -294,7 +294,10 @@ export default function FormBuilder() {
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="flex w-[308px] px-7 py-3 items-center gap-2 rounded opacity-50">
+                    <button
+                      onClick={() => navigate("/document-verification")}
+                      className="flex w-[308px] px-7 py-3 items-center gap-2 rounded hover:bg-[#E6F1FD] transition-colors cursor-pointer"
+                    >
                       <div className="flex w-[220px] flex-col items-start gap-2 flex-shrink-0">
                         <div className="flex w-[248px] items-center gap-1">
                           <h4 className="text-[#292F4C] text-sm font-bold leading-[13px]">
@@ -308,7 +311,7 @@ export default function FormBuilder() {
                           </p>
                         </div>
                       </div>
-                    </div>
+                    </button>
                   </div>
                   <div className="flex w-[308px] px-7 py-3 items-center gap-2.5 rounded opacity-50">
                     <div className="flex flex-col items-start gap-2 flex-1">
@@ -371,6 +374,32 @@ export default function FormBuilder() {
                         </p>
                       </div>
 
+                      {/* Red Warning Alert - Show only when system fields are focused */}
+                      {showSystemFieldWarning && (
+                        <div className="flex w-full p-3 items-start gap-3 rounded bg-red-50 border border-red-200 mb-4">
+                          <div className="flex w-5 h-5 flex-shrink-0 items-center justify-center">
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M8 1.33334C4.32 1.33334 1.33333 4.32001 1.33333 8.00001C1.33333 11.68 4.32 14.6667 8 14.6667C11.68 14.6667 14.6667 11.68 14.6667 8.00001C14.6667 4.32001 11.68 1.33334 8 1.33334ZM7.33333 5.33334C7.33333 4.96001 7.62667 4.66668 8 4.66668C8.37333 4.66668 8.66667 4.96001 8.66667 5.33334V8.66668C8.66667 9.04001 8.37333 9.33334 8 9.33334C7.62667 9.33334 7.33333 9.04001 7.33333 8.66668V5.33334ZM8.66667 11.3333C8.66667 11.7067 8.37333 12 8 12C7.62667 12 7.33333 11.7067 7.33333 11.3333C7.33333 10.96 7.62667 10.6667 8 10.6667C8.37333 10.6667 8.66667 10.96 8.66667 11.3333Z"
+                                fill="#DC2626"
+                              />
+                            </svg>
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-red-700 text-[13px] font-medium leading-4">
+                              This field is system-required and cannot be
+                              modified.
+                            </p>
+                          </div>
+                        </div>
+                      )}
+
                       {/* System Required Fields */}
                       <div className="flex w-[923px] flex-col items-start gap-2">
                         {/* First Name */}
@@ -388,6 +417,8 @@ export default function FormBuilder() {
                                   e.target.value,
                                 )
                               }
+                              onFocus={() => setShowSystemFieldWarning(true)}
+                              onBlur={() => setShowSystemFieldWarning(false)}
                               placeholder="Eg: jhon"
                               className="w-full h-10 px-3 text-[#323238] text-[13px] border border-[#D0D4E4] rounded focus:outline-none focus:ring-2 focus:ring-[#0073EA] focus:border-transparent placeholder:text-[#676879]"
                             />
@@ -409,6 +440,8 @@ export default function FormBuilder() {
                                   e.target.value,
                                 )
                               }
+                              onFocus={() => setShowSystemFieldWarning(true)}
+                              onBlur={() => setShowSystemFieldWarning(false)}
                               placeholder="Eg: Wick"
                               className="w-full h-10 px-3 text-[#323238] text-[13px] border border-[#D0D4E4] rounded focus:outline-none focus:ring-2 focus:ring-[#0073EA] focus:border-transparent placeholder:text-[#676879]"
                             />
@@ -427,6 +460,8 @@ export default function FormBuilder() {
                               onChange={(e) =>
                                 handleSystemFieldChange("email", e.target.value)
                               }
+                              onFocus={() => setShowSystemFieldWarning(true)}
+                              onBlur={() => setShowSystemFieldWarning(false)}
                               placeholder="Eg: jhonwick@email.com"
                               className="w-full h-10 px-3 text-[#323238] text-[13px] border border-[#D0D4E4] rounded focus:outline-none focus:ring-2 focus:ring-[#0073EA] focus:border-transparent placeholder:text-[#676879]"
                             />
