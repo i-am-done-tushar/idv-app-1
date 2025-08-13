@@ -26,7 +26,10 @@ const App = () => (
           <Route path="/home" element={<Index />} />
           <Route path="/choose-template" element={<ChooseTemplate />} />
           <Route path="/form-builder" element={<FormBuilder />} />
-          <Route path="/document-verification" element={<DocumentVerification />} />
+          <Route
+            path="/document-verification"
+            element={<DocumentVerification />}
+          />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
