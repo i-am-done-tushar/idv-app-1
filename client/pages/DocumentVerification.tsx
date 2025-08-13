@@ -39,6 +39,17 @@ export default function DocumentVerification() {
 
   const [availableCountries] = useState<Omit<Country, "selected">[]>([
     {
+      id: "india",
+      name: "India",
+      documentTypes: [
+        { id: "aadhar", name: "Aadhar Card", selected: false },
+        { id: "pan", name: "Pan Card", selected: false },
+        { id: "drivers_license", name: "Driving License", selected: false },
+        { id: "passport", name: "Passport", selected: false },
+        { id: "voter_id", name: "Voter ID Card", selected: false },
+      ],
+    },
+    {
       id: "afghanistan",
       name: "Afghanistan",
       documentTypes: [
