@@ -553,10 +553,14 @@ export default function Preview() {
                           </div>
                           <div className="flex flex-col items-start gap-2 flex-1">
                             <h4 className="text-[#172B4D] text-[13px] font-medium leading-[18px]">
-                              Ask the user to try again
+                              {formData.biometricSettings?.livenessHandling === "retry"
+                                ? "Ask the user to try again"
+                                : "Block further attempts after allowed retries fail"}
                             </h4>
                             <p className="text-[#505258] text-[13px] leading-5">
-                              Prompt the user to reattempt the selfie.
+                              {formData.biometricSettings?.livenessHandling === "retry"
+                                ? "Prompt the user to reattempt the selfie."
+                                : "Send submission for manual verification."}
                             </p>
                           </div>
                         </div>
