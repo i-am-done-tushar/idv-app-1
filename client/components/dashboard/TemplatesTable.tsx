@@ -182,6 +182,14 @@ export function TemplatesTable() {
     position: { x: number; y: number };
   }>({ isOpen: false, templateId: 0, templateName: '', position: { x: 0, y: 0 } });
 
+  useEffect(() => {
+    // Load saved templates from localStorage
+    const savedTemplates = JSON.parse(localStorage.getItem('savedTemplates') || '[]');
+    if (savedTemplates.length > 0) {
+      setAllTemplates([...savedTemplates, ...templates]);
+    }
+  }, []);
+
   const handleShowModal = (templateId: number, event: React.MouseEvent) => {
     event.stopPropagation();
     const rect = (event.target as HTMLElement).getBoundingClientRect();
