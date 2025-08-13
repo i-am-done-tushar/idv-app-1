@@ -35,6 +35,13 @@ export default function DocumentVerification() {
     "reject",
   );
 
+  const [biometricSettings, setBiometricSettings] = useState({
+    maxRetries: "4",
+    livenessHandling: "retry" as "retry" | "block",
+    dataStorage: true,
+    retentionPeriod: "6",
+  });
+
   const [countries, setCountries] = useState<Country[]>([]);
 
   const [availableCountries] = useState<Omit<Country, "selected">[]>([
