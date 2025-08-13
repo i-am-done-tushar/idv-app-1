@@ -32,8 +32,7 @@ export default function FormBuilder() {
   };
 
   const handleNext = () => {
-    console.log("Navigate to preview");
-    // Navigate to preview step
+    navigate("/document-verification");
   };
 
   const handleSystemFieldChange = (
