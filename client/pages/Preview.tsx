@@ -579,14 +579,22 @@ export default function Preview() {
                       </div>
                       
                       <div className="flex px-6 py-5 flex-col items-start gap-2 w-full rounded bg-[#F6F7FB]">
-                        <div className="flex items-center gap-2 w-full">
-                          <label className="text-[#172B4D] text-[13px] font-medium leading-[18px] flex-1">
-                            Enable biometric data storage
-                          </label>
-                          <div className="flex h-8 px-3 w-80 items-center rounded border border-[#C3C6D4]">
-                            <span className="text-[#676879] text-[13px]">6 Months</span>
+                        {formData.biometricSettings?.dataStorage ? (
+                          <div className="flex items-center gap-2 w-full">
+                            <label className="text-[#172B4D] text-[13px] font-medium leading-[18px] flex-1">
+                              Enable biometric data storage
+                            </label>
+                            <div className="flex h-8 px-3 w-80 items-center rounded border border-[#C3C6D4]">
+                              <span className="text-[#676879] text-[13px]">
+                                {formData.biometricSettings?.retentionPeriod || "6"} Months
+                              </span>
+                            </div>
                           </div>
-                        </div>
+                        ) : (
+                          <div className="text-[#676879] text-[13px] italic">
+                            Biometric data storage disabled
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
