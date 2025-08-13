@@ -167,6 +167,8 @@ function AvatarGroup({ invitees, templateId, onShowModal }: AvatarGroupProps) {
 }
 
 export function TemplatesTable() {
+  const [allTemplates, setAllTemplates] = useState<Template[]>(templates);
+
   const [modalState, setModalState] = useState<{
     isOpen: boolean;
     users: User[];
