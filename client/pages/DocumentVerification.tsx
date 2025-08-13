@@ -979,7 +979,7 @@ export default function DocumentVerification() {
   };
 
   const handleNext = () => {
-    console.log("Navigate to next step");
+    navigate("/biometric-verification");
   };
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
