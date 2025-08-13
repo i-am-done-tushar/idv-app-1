@@ -90,7 +90,7 @@ export default function Preview() {
   const handleCloseSuccessModal = () => {
     setShowSuccessModal(false);
     // Navigate to dashboard after closing modal
-    navigate("/");
+    navigate("/dashboard");
   };
 
   return (
