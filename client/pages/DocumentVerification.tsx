@@ -35,19 +35,7 @@ export default function DocumentVerification() {
     "reject",
   );
 
-  const [countries, setCountries] = useState<Country[]>([
-    {
-      id: "india",
-      name: "India",
-      selected: true,
-      documentTypes: [
-        { id: "aadhar", name: "Aadhar Card", selected: false },
-        { id: "pan", name: "Pan Card", selected: false },
-        { id: "driving", name: "Driving License", selected: false },
-        { id: "passport", name: "Passport", selected: false },
-      ],
-    },
-  ]);
+  const [countries, setCountries] = useState<Country[]>([]);
 
   const [availableCountries] = useState<Omit<Country, "selected">[]>([
     {
