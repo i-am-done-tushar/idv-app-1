@@ -11,6 +11,7 @@ import Dashboard from "./pages/Dashboard";
 import ChooseTemplate from "./pages/ChooseTemplate";
 import FormBuilder from "./pages/FormBuilder";
 import DocumentVerification from "./pages/DocumentVerification";
+import BiometricVerification from "./pages/BiometricVerification";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
