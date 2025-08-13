@@ -360,37 +360,47 @@ export default function Preview() {
                       </div>
                       
                       <div className="flex px-6 py-5 flex-col items-start gap-5 w-full rounded bg-[#F6F7FB]">
-                        <div className="flex items-start gap-2 w-full pb-5 border-b border-[#D0D4E4]">
-                          <div className="flex w-[18px] h-[18px] items-center justify-center rounded-full bg-[#258750]">
-                            <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                              <path d="M4.96526 7.24452L8.49526 3.71453C8.5914 3.61839 8.70547 3.57031 8.83745 3.57031C8.96944 3.57031 9.08351 3.61839 9.17965 3.71453C9.2758 3.81068 9.32387 3.92474 9.32387 4.05673C9.32387 4.18872 9.2758 4.30278 9.17965 4.39893L5.30345 8.27514C5.2073 8.37128 5.09457 8.41935 4.96526 8.41935C4.83595 8.41935 4.72322 8.37128 4.62707 8.27514L2.81805 6.46612C2.72191 6.36997 2.67517 6.25591 2.67784 6.12392C2.68052 5.99193 2.72993 5.87786 2.82608 5.78172C2.92222 5.68557 3.03629 5.6375 3.16828 5.6375C3.30027 5.6375 3.41433 5.68557 3.51048 5.78172L4.96526 7.24452Z" fill="white"/>
-                            </svg>
+                        {formData.uploadOptions?.allowUploadFromDevice && (
+                          <div className="flex items-start gap-2 w-full pb-5 border-b border-[#D0D4E4]">
+                            <div className="flex w-[18px] h-[18px] items-center justify-center rounded-full bg-[#258750]">
+                              <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                                <path d="M4.96526 7.24452L8.49526 3.71453C8.5914 3.61839 8.70547 3.57031 8.83745 3.57031C8.96944 3.57031 9.08351 3.61839 9.17965 3.71453C9.2758 3.81068 9.32387 3.92474 9.32387 4.05673C9.32387 4.18872 9.2758 4.30278 9.17965 4.39893L5.30345 8.27514C5.2073 8.37128 5.09457 8.41935 4.96526 8.41935C4.83595 8.41935 4.72322 8.37128 4.62707 8.27514L2.81805 6.46612C2.72191 6.36997 2.67517 6.25591 2.67784 6.12392C2.68052 5.99193 2.72993 5.87786 2.82608 5.78172C2.92222 5.68557 3.03629 5.6375 3.16828 5.6375C3.30027 5.6375 3.41433 5.68557 3.51048 5.78172L4.96526 7.24452Z" fill="white"/>
+                              </svg>
+                            </div>
+                            <div className="flex flex-col items-start gap-2 flex-1">
+                              <h4 className="text-[#172B4D] text-[13px] font-medium leading-[18px]">
+                                Allow Upload from Device
+                              </h4>
+                              <p className="text-[#505258] text-[13px] leading-5">
+                                Let users upload existing documents directly from their device.
+                              </p>
+                            </div>
                           </div>
-                          <div className="flex flex-col items-start gap-2 flex-1">
-                            <h4 className="text-[#172B4D] text-[13px] font-medium leading-[18px]">
-                              Allow Upload from Device
-                            </h4>
-                            <p className="text-[#505258] text-[13px] leading-5">
-                              Let users upload existing documents directly from their device.
-                            </p>
+                        )}
+
+                        {formData.uploadOptions?.allowCaptureViaWebcam && (
+                          <div className="flex items-start gap-2 w-full">
+                            <div className="flex w-[18px] h-[18px] items-center justify-center rounded-full bg-[#258750]">
+                              <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                                <path d="M4.96526 7.24452L8.49526 3.71453C8.5914 3.61839 8.70547 3.57031 8.83745 3.57031C8.96944 3.57031 9.08351 3.61839 9.17965 3.71453C9.2758 3.81068 9.32387 3.92474 9.32387 4.05673C9.32387 4.18872 9.2758 4.30278 9.17965 4.39893L5.30345 8.27514C5.2073 8.37128 5.09457 8.41935 4.96526 8.41935C4.83595 8.41935 4.72322 8.37128 4.62707 8.27514L2.81805 6.46612C2.72191 6.36997 2.67517 6.25591 2.67784 6.12392C2.68052 5.99193 2.72993 5.87786 2.82608 5.78172C2.92222 5.68557 3.03629 5.6375 3.16828 5.6375C3.30027 5.6375 3.41433 5.68557 3.51048 5.78172L4.96526 7.24452Z" fill="white"/>
+                              </svg>
+                            </div>
+                            <div className="flex flex-col items-start gap-2 flex-1">
+                              <h4 className="text-[#172B4D] text-[13px] font-medium leading-[18px]">
+                                Allow Capture via Webcam
+                              </h4>
+                              <p className="text-[#505258] text-[13px] leading-5">
+                                Enable webcam access to allow users to capture documents in real time.
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                        
-                        <div className="flex items-start gap-2 w-full">
-                          <div className="flex w-[18px] h-[18px] items-center justify-center rounded-full bg-[#258750]">
-                            <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                              <path d="M4.96526 7.24452L8.49526 3.71453C8.5914 3.61839 8.70547 3.57031 8.83745 3.57031C8.96944 3.57031 9.08351 3.61839 9.17965 3.71453C9.2758 3.81068 9.32387 3.92474 9.32387 4.05673C9.32387 4.18872 9.2758 4.30278 9.17965 4.39893L5.30345 8.27514C5.2073 8.37128 5.09457 8.41935 4.96526 8.41935C4.83595 8.41935 4.72322 8.37128 4.62707 8.27514L2.81805 6.46612C2.72191 6.36997 2.67517 6.25591 2.67784 6.12392C2.68052 5.99193 2.72993 5.87786 2.82608 5.78172C2.92222 5.68557 3.03629 5.6375 3.16828 5.6375C3.30027 5.6375 3.41433 5.68557 3.51048 5.78172L4.96526 7.24452Z" fill="white"/>
-                            </svg>
+                        )}
+
+                        {!formData.uploadOptions?.allowUploadFromDevice && !formData.uploadOptions?.allowCaptureViaWebcam && (
+                          <div className="text-[#676879] text-[13px] italic">
+                            No upload options selected
                           </div>
-                          <div className="flex flex-col items-start gap-2 flex-1">
-                            <h4 className="text-[#172B4D] text-[13px] font-medium leading-[18px]">
-                              Allow Capture via Webcam
-                            </h4>
-                            <p className="text-[#505258] text-[13px] leading-5">
-                              Enable webcam access to allow users to capture documents in real time.
-                            </p>
-                          </div>
-                        </div>
+                        )}
                       </div>
                     </div>
 
