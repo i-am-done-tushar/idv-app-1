@@ -21,6 +21,7 @@ export default function FormBuilder() {
   >([]);
   const [fieldTypeSelectorOpen, setFieldTypeSelectorOpen] = useState(false);
   const [selectedFieldId, setSelectedFieldId] = useState<number | null>(null);
+  const [showSystemFieldWarning, setShowSystemFieldWarning] = useState(false);
 
   const handleBack = () => {
     navigate(-1);
