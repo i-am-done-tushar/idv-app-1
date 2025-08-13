@@ -3,6 +3,7 @@ import { ChevronLeft, Minus, Eye, Save, Send } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { SuccessModal } from "../components/ui/SuccessModal";
 import { NameTemplateModal } from "../components/dashboard/NameTemplateModal";
+import { SendInviteModal } from "../components/dashboard/SendInviteModal";
 
 export default function Preview() {
   const navigate = useNavigate();
