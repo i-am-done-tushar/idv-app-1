@@ -35,21 +35,20 @@ export default function DocumentVerification() {
     "reject",
   );
 
-  const [countries, setCountries] = useState<Country[]>([
+  const [countries, setCountries] = useState<Country[]>([]);
+
+  const [availableCountries] = useState<Omit<Country, "selected">[]>([
     {
       id: "india",
       name: "India",
-      selected: true,
       documentTypes: [
         { id: "aadhar", name: "Aadhar Card", selected: false },
         { id: "pan", name: "Pan Card", selected: false },
-        { id: "driving", name: "Driving License", selected: false },
+        { id: "drivers_license", name: "Driving License", selected: false },
         { id: "passport", name: "Passport", selected: false },
+        { id: "voter_id", name: "Voter ID Card", selected: false },
       ],
     },
-  ]);
-
-  const [availableCountries] = useState<Omit<Country, "selected">[]>([
     {
       id: "afghanistan",
       name: "Afghanistan",
@@ -896,6 +895,69 @@ export default function DocumentVerification() {
         { id: "drivers_license", name: "Driver's License", selected: false },
       ],
     },
+    {
+      id: "nepal",
+      name: "Nepal",
+      documentTypes: [
+        { id: "passport", name: "Passport", selected: false },
+        { id: "citizenship", name: "Citizenship Certificate", selected: false },
+        { id: "drivers_license", name: "Driver's License", selected: false },
+      ],
+    },
+    {
+      id: "myanmar",
+      name: "Myanmar",
+      documentTypes: [
+        { id: "passport", name: "Passport", selected: false },
+        { id: "national_id", name: "National ID Card", selected: false },
+        { id: "drivers_license", name: "Driver's License", selected: false },
+      ],
+    },
+    {
+      id: "cambodia_updated",
+      name: "Cambodia",
+      documentTypes: [
+        { id: "passport", name: "Passport", selected: false },
+        { id: "national_id", name: "National ID Card", selected: false },
+        { id: "drivers_license", name: "Driver's License", selected: false },
+      ],
+    },
+    {
+      id: "laos",
+      name: "Laos",
+      documentTypes: [
+        { id: "passport", name: "Passport", selected: false },
+        { id: "national_id", name: "National ID Card", selected: false },
+        { id: "drivers_license", name: "Driver's License", selected: false },
+      ],
+    },
+    {
+      id: "maldives",
+      name: "Maldives",
+      documentTypes: [
+        { id: "passport", name: "Passport", selected: false },
+        { id: "national_id", name: "National ID Card", selected: false },
+        { id: "drivers_license", name: "Driver's License", selected: false },
+      ],
+    },
+    {
+      id: "bhutan",
+      name: "Bhutan",
+      documentTypes: [
+        { id: "passport", name: "Passport", selected: false },
+        { id: "citizenship_id", name: "Citizenship ID Card", selected: false },
+        { id: "drivers_license", name: "Driver's License", selected: false },
+      ],
+    },
+    {
+      id: "mongolia",
+      name: "Mongolia",
+      documentTypes: [
+        { id: "passport", name: "Passport", selected: false },
+        { id: "national_id", name: "National ID Card", selected: false },
+        { id: "drivers_license", name: "Driver's License", selected: false },
+      ],
+    },
   ]);
 
   const [countryDropdownOpen, setCountryDropdownOpen] = useState(false);
@@ -910,7 +972,16 @@ export default function DocumentVerification() {
   };
 
   const handleNext = () => {
-    console.log("Navigate to next step");
+    // Save document verification data to localStorage
+    localStorage.setItem(
+      "documentVerificationData",
+      JSON.stringify({
+        uploadOptions,
+        documentHandling,
+        countries,
+      }),
+    );
+    navigate("/biometric-verification");
   };
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -1149,7 +1220,10 @@ export default function DocumentVerification() {
                       </p>
                     </div>
                   </div>
-                  <div className="flex w-[308px] px-7 py-3 items-center gap-2 rounded bg-[#F6F7FB]">
+                  <button
+                    onClick={() => navigate("/form-builder")}
+                    className="flex w-[308px] px-7 py-3 items-center gap-2 rounded bg-[#F6F7FB] hover:bg-[#E6F1FD] transition-colors cursor-pointer"
+                  >
                     <div className="flex flex-col items-start gap-2 flex-1">
                       <div className="flex items-center gap-1 w-full">
                         <h4 className="flex-1 text-[#292F4C] text-sm font-bold leading-[13px]">
@@ -1163,7 +1237,7 @@ export default function DocumentVerification() {
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </button>
                   <div className="flex w-[308px] px-7 py-3 items-center gap-2 rounded bg-[#CCE5FF] border border-[#DEDEDD]">
                     <div className="flex flex-col items-start gap-2 flex-1">
                       <div className="flex items-center gap-1 w-full">
@@ -1517,6 +1591,19 @@ export default function DocumentVerification() {
                     </div>
                   </div>
                 </div>
+              </div>
+
+              {/* Continue Button */}
+              <div className="flex w-full justify-end px-4 py-6 border-t border-[#DEDEDD] bg-white mt-auto">
+                <button
+                  onClick={handleNext}
+                  className="flex h-10 px-6 py-3 justify-center items-center gap-2 rounded bg-[#0073EA] hover:bg-[#005BB5] transition-colors"
+                >
+                  <span className="text-white text-sm font-medium">
+                    Continue
+                  </span>
+                  <ChevronRight size={16} className="text-white" />
+                </button>
               </div>
             </div>
           </div>

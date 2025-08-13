@@ -11,6 +11,8 @@ import Dashboard from "./pages/Dashboard";
 import ChooseTemplate from "./pages/ChooseTemplate";
 import FormBuilder from "./pages/FormBuilder";
 import DocumentVerification from "./pages/DocumentVerification";
+import BiometricVerification from "./pages/BiometricVerification";
+import Preview from "./pages/Preview";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +32,11 @@ const App = () => (
             path="/document-verification"
             element={<DocumentVerification />}
           />
+          <Route
+            path="/biometric-verification"
+            element={<BiometricVerification />}
+          />
+          <Route path="/preview" element={<Preview />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
