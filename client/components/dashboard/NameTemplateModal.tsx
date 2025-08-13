@@ -6,6 +6,7 @@ interface NameTemplateModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSave?: (templateName: string) => void;
+  shouldNavigate?: boolean;
 }
 
 export function NameTemplateModal({
