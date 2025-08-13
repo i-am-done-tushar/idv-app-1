@@ -25,7 +25,9 @@ export function NameTemplateModal({
       onSave?.(templateName.trim());
       setTemplateName("");
       onClose();
-      navigate("/form-builder");
+      if (shouldNavigate) {
+        navigate("/form-builder");
+      }
     }
   };
 
