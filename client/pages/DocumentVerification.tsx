@@ -39,6 +39,45 @@ export default function DocumentVerification() {
     }
   ]);
 
+  const [availableCountries] = useState<Omit<Country, 'selected'>[]>([
+    {
+      id: 'usa',
+      name: 'United States',
+      documentTypes: [
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'state_id', name: 'State ID', selected: false },
+      ]
+    },
+    {
+      id: 'uk',
+      name: 'United Kingdom',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'driving_licence', name: 'Driving Licence', selected: false },
+        { id: 'national_id', name: 'National ID Card', selected: false },
+      ]
+    },
+    {
+      id: 'canada',
+      name: 'Canada',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'drivers_license', name: "Driver's License", selected: false },
+        { id: 'provincial_id', name: 'Provincial ID', selected: false },
+      ]
+    },
+    {
+      id: 'australia',
+      name: 'Australia',
+      documentTypes: [
+        { id: 'passport', name: 'Passport', selected: false },
+        { id: 'drivers_licence', name: "Driver's Licence", selected: false },
+        { id: 'proof_of_age', name: 'Proof of Age Card', selected: false },
+      ]
+    }
+  ]);
+
   const [countryDropdownOpen, setCountryDropdownOpen] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
 
@@ -82,6 +121,21 @@ export default function DocumentVerification() {
 
   const removeCountry = (countryId: string) => {
     setCountries(prev => prev.filter(country => country.id !== countryId));
+  };
+
+  const addCountry = (countryToAdd: Omit<Country, 'selected'>) => {
+    const newCountry: Country = {
+      ...countryToAdd,
+      selected: true,
+      documentTypes: countryToAdd.documentTypes.map(dt => ({ ...dt, selected: false }))
+    };
+    setCountries(prev => [...prev, newCountry]);
+    setCountryDropdownOpen(false);
+  };
+
+  const getAvailableCountries = () => {
+    const selectedCountryIds = countries.map(c => c.id);
+    return availableCountries.filter(country => !selectedCountryIds.includes(country.id));
   };
 
   return (
@@ -545,6 +599,24 @@ export default function DocumentVerification() {
                               </span>
                               <ChevronDown size={10} className="text-[#676879]" />
                             </button>
+                            {countryDropdownOpen && (
+                              <div className="absolute top-full left-0 w-80 mt-1 bg-white border border-[#C3C6D4] rounded shadow-lg z-10 max-h-48 overflow-y-auto">
+                                {getAvailableCountries().map((country) => (
+                                  <button
+                                    key={country.id}
+                                    onClick={() => addCountry(country)}
+                                    className="flex w-full px-3 py-2 text-left text-[13px] text-[#172B4D] hover:bg-[#F6F7FB]"
+                                  >
+                                    {country.name}
+                                  </button>
+                                ))}
+                                {getAvailableCountries().length === 0 && (
+                                  <div className="px-3 py-2 text-[13px] text-[#676879]">
+                                    No more countries available
+                                  </div>
+                                )}
+                              </div>
+                            )}
                           </div>
                         </div>
 
