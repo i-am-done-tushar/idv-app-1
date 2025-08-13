@@ -294,7 +294,10 @@ export default function FormBuilder() {
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <div className="flex w-[308px] px-7 py-3 items-center gap-2 rounded opacity-50">
+                    <button
+                      onClick={() => navigate("/document-verification")}
+                      className="flex w-[308px] px-7 py-3 items-center gap-2 rounded hover:bg-[#E6F1FD] transition-colors cursor-pointer"
+                    >
                       <div className="flex w-[220px] flex-col items-start gap-2 flex-shrink-0">
                         <div className="flex w-[248px] items-center gap-1">
                           <h4 className="text-[#292F4C] text-sm font-bold leading-[13px]">
@@ -308,7 +311,7 @@ export default function FormBuilder() {
                           </p>
                         </div>
                       </div>
-                    </div>
+                    </button>
                   </div>
                   <div className="flex w-[308px] px-7 py-3 items-center gap-2.5 rounded opacity-50">
                     <div className="flex flex-col items-start gap-2 flex-1">
