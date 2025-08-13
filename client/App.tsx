@@ -12,6 +12,7 @@ import ChooseTemplate from "./pages/ChooseTemplate";
 import FormBuilder from "./pages/FormBuilder";
 import DocumentVerification from "./pages/DocumentVerification";
 import BiometricVerification from "./pages/BiometricVerification";
+import Preview from "./pages/Preview";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
