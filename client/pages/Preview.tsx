@@ -7,6 +7,7 @@ import {
   Send,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { SuccessModal } from "../components/ui/SuccessModal";
 
 export default function Preview() {
   const navigate = useNavigate();
