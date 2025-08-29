@@ -6,12 +6,14 @@ interface NameTemplateModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSave?: (templateName: string) => void;
+  shouldNavigate?: boolean;
 }
 
 export function NameTemplateModal({
   isOpen,
   onClose,
   onSave,
+  shouldNavigate = true,
 }: NameTemplateModalProps) {
   const [templateName, setTemplateName] = useState("");
   const navigate = useNavigate();
@@ -23,7 +25,9 @@ export function NameTemplateModal({
       onSave?.(templateName.trim());
       setTemplateName("");
       onClose();
-      navigate("/form-builder");
+      if (shouldNavigate) {
+        navigate("/form-builder");
+      }
     }
   };
 

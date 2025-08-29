@@ -2,11 +2,15 @@ import React, { useState, useEffect } from "react";
 import { ChevronLeft, Minus, Eye, Save, Send } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { SuccessModal } from "../components/ui/SuccessModal";
+import { NameTemplateModal } from "../components/dashboard/NameTemplateModal";
+import { SendInviteModal } from "../components/dashboard/SendInviteModal";
 
 export default function Preview() {
   const navigate = useNavigate();
   const [currentView, setCurrentView] = useState<"admin" | "receiver">("admin");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showNameTemplateModal, setShowNameTemplateModal] = useState(false);
+  const [showSendInviteModal, setShowSendInviteModal] = useState(false);
 
   // User configuration data
   const [formData, setFormData] = useState({
@@ -53,10 +57,15 @@ export default function Preview() {
   };
 
   const handleSave = () => {
-    // Save the template to localStorage with a unique ID
+    // Show the naming modal instead of saving directly
+    setShowNameTemplateModal(true);
+  };
+
+  const handleSaveWithName = (templateName: string) => {
+    // Save the template to localStorage with the provided name
     const templateData = {
       id: Date.now(),
-      name: "New Template",
+      name: templateName,
       ...formData,
       createdDate: new Date().toLocaleDateString("en-GB"),
       createdBy: "Current User",
@@ -75,13 +84,45 @@ export default function Preview() {
     existingTemplates.unshift(templateData);
     localStorage.setItem("savedTemplates", JSON.stringify(existingTemplates));
 
-    // Show success modal
+    // Close naming modal and show success modal
+    setShowNameTemplateModal(false);
     setShowSuccessModal(true);
   };
 
   const handleCloseSuccessModal = () => {
     setShowSuccessModal(false);
-    // Navigate to dashboard after closing modal
+    // Navigate to home page (dashboard) after closing modal
+    navigate("/");
+  };
+
+  const handleSaveAndSendInvite = () => {
+    setShowSendInviteModal(true);
+  };
+
+  const handleInviteSuccess = () => {
+    // Also save the template when invite is sent
+    const templateData = {
+      id: Date.now(),
+      name: "New Template", // You could also integrate with naming modal here
+      ...formData,
+      createdDate: new Date().toLocaleDateString("en-GB"),
+      createdBy: "Current User",
+      status: "Completed" as const,
+      lastUpdated: new Date().toLocaleDateString("en-GB"),
+      invitees: [
+        { initials: "CU", color: "avatar-1" },
+        { initials: "+0", color: "grey-bg" },
+      ],
+    };
+
+    // Save to localStorage
+    const existingTemplates = JSON.parse(
+      localStorage.getItem("savedTemplates") || "[]",
+    );
+    existingTemplates.unshift(templateData);
+    localStorage.setItem("savedTemplates", JSON.stringify(existingTemplates));
+
+    // Navigate to home page
     navigate("/");
   };
 
@@ -162,7 +203,10 @@ export default function Preview() {
                 </h1>
               </div>
               <div className="flex items-center gap-1">
-                <button className="flex h-8 px-2 py-[9px] justify-center items-center gap-1 rounded border border-[#0073EA] bg-white hover:bg-[#F6F7FB] transition-colors">
+                <button
+                  onClick={handleSaveAndSendInvite}
+                  className="flex h-8 px-2 py-[9px] justify-center items-center gap-1 rounded border border-[#0073EA] bg-white hover:bg-[#F6F7FB] transition-colors"
+                >
                   <Send size={16} className="text-[#0073EA]" />
                   <span className="text-[#0073EA] text-[13px] font-medium">
                     Save & Send Invite
@@ -738,8 +782,23 @@ export default function Preview() {
       <SuccessModal
         isOpen={showSuccessModal}
         onClose={handleCloseSuccessModal}
-        title='"New Template" has been saved successfully.'
+        title='Template has been saved successfully.'
         message="Now invite users using this saved template."
+      />
+
+      {/* Name Template Modal */}
+      <NameTemplateModal
+        isOpen={showNameTemplateModal}
+        onClose={() => setShowNameTemplateModal(false)}
+        onSave={handleSaveWithName}
+        shouldNavigate={false}
+      />
+
+      {/* Send Invite Modal */}
+      <SendInviteModal
+        isOpen={showSendInviteModal}
+        onClose={() => setShowSendInviteModal(false)}
+        onSuccess={handleInviteSuccess}
       />
     </div>
   );
